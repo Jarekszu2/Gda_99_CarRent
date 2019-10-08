@@ -27,7 +27,6 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         this.passwordEncoder = passwordEncoder;
     }
 
-
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         addDefaultRole("USER");
