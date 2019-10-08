@@ -13,6 +13,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private AuthenticationService authenticationService;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
@@ -27,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .formLogin()
                         .loginPage("/login")
                         .defaultSuccessUrl("/")
-                        .successForwardUrl("/")
+//                        .successForwardUrl("/")
                         .permitAll()
                 .and()
                     .logout()
@@ -37,11 +43,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .permitAll();
     }
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private AuthenticationService authenticationService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
