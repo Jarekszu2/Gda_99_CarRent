@@ -18,8 +18,14 @@ public class AccountController {
     }
 
     @PostMapping("/register")
-    public String register(Account account, String passwordConfirm) {
+    public String register(Model model, Account account, String passwordConfirm) {
         // todo: tworzenie konta
+        if (!account.getPassword().equals(passwordConfirm)) {
+            model.addAttribute("newAccount", account);
+            model.addAttribute("errorMessage", "Passwords do not match.");
+
+            return "registration-form";
+        }
         return "redirect:/login";
     }
 }

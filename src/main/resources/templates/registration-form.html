@@ -11,6 +11,9 @@
     <h1>Registration form</h1>
     <form th:action="@{/user/register}" method="post" th:object="${newAccount}">
         <div class="row col-12 form-container">
+            <div th:if="${errorMessage != null}" class="row col-md-12 form-input-row">
+                <div class="col-md-12 alert alert-danger" th:text="${errorMessage}"></div>
+            </div>
             <div class="row col-md-12 form-input-row">
                 <div class="col-md-6">
                     <label for="username">Username:</label>
@@ -32,7 +35,7 @@
                     <label for="password-confirm">Password confirm:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="password" id="password-confirm" th:name="*{passwordConfirm}">
+                    <input class="form-control" type="password" id="password-confirm" th:name="passwordConfirm">
                 </div>
             </div>
             <div class="row col-md-12 form-button-row">
