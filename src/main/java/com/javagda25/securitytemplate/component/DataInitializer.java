@@ -42,7 +42,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
             Account account = new Account();
             account.setUsername(username);
             account.setPassword(passwordEncoder.encode(password));
-s
+
             Set<AccountRole> userRoles = findRoles(roles);
             account.setAccountRoles(userRoles);
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account list</title>
+    <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
+</head>
+<body>
+<th:block th:replace="fragments :: navigator" th:remove="tag"/>
+<div class="container">
+    <h1>Account list</h1>
+    <div class="row col-md-12">
+        <div class="row col-md-12 list-header-row">
+            <div class="col-3">Id</div>
+            <div class="col-3">Username</div>
+            <div class="col-3">Roles</div>
+            <div class="col-3"><!--Buttons--></div>
+        </div>
+        <div th:each="account : ${accounts}" class="row col-md-12 list-data-row">
+            <div class="col-3" th:text="${account.getId()}"></div>
+            <div class="col-3" th:text="${account.getUsername()}"></div>
+            <div class="col-3" th:text="${account.getAccountRoles()}"></div>
+            <div class="row col-3">
+                <div class="col-6">
+                    <a th:href="@{/admin/account/remove(accountId=${account.getId()})}">
+                        <button type="button" class="btn btn-danger">Remove</button>
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a th:href="@{/admin/account/lock(accountId=${account.getId()})}">
+                        <button type="button" class="btn btn-primary">Lock</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:replace="fragments :: footer" th:remove="tag"/>
+<th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</body>
+</html>
