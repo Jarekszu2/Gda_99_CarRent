@@ -23,12 +23,15 @@
             <div class="row col-3">
                 <div class="col-6">
                     <a th:href="@{/admin/account/remove(accountId=${account.getId()})}">
-                        <button type="button" class="btn btn-danger">Remove</button>
+                        <button th:disabled="${account.isAdmin()}" type="button" class="btn btn-danger">Remove
+                        </button>
                     </a>
                 </div>
                 <div class="col-6">
-                    <a th:href="@{/admin/account/lock(accountId=${account.getId()})}">
-                        <button type="button" class="btn btn-primary">Lock</button>
+                    <a th:href="@{/admin/account/toggleLock(accountId=${account.getId()})}">
+                        <button type="button" class="btn btn-primary"
+                                th:text="${account.isLocked()? 'Unlock': 'Lock'}">
+                        </button>
                     </a>
                 </div>
             </div>

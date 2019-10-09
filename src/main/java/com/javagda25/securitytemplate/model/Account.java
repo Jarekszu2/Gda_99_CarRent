@@ -34,4 +34,11 @@ public class Account {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
     @Cascade(value = org.hibernate.annotations.CascadeType.DETACH)
     private Set<AccountRole> accountRoles;
+
+    private boolean locked;
+
+    public boolean isAdmin() {
+        return accountRoles.stream()
+                .anyMatch(accountRole -> accountRole.getName().equals("ADMIN"));
+    }
 }

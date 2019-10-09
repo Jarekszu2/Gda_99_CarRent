@@ -40,4 +40,13 @@ public class AccountService {
     public List<Account> getAll() {
         return accountRepository.findAll();
     }
+
+    public void toggleLock(Long accountId) {
+        if(accountRepository.existsById(accountId)){
+            Account account = accountRepository.getOne(accountId);
+            account.setLocked(!account.isLocked());
+
+            accountRepository.save(account);
+        }
+    }
 }

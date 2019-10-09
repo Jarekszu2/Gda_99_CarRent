@@ -35,6 +35,7 @@ public class AuthenticationService implements UserDetailsService {
                     .username(account.getUsername())
                     .password(account.getPassword())
                     .roles(roles)
+                    .accountLocked(account.isLocked())
                     .build();
         }
 

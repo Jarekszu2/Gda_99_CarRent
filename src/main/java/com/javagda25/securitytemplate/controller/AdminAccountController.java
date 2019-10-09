@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(path = "/admin/account/")
@@ -24,5 +25,12 @@ public class AdminAccountController {
     public String getUserList(Model model) {
         model.addAttribute("accounts", accountService.getAll());
         return "account-list";
+    }
+
+    @GetMapping("/toggleLock")
+    public String toggleLock(@RequestParam(name = "accountId") Long accountId) {
+        accountService.toggleLock(accountId);
+
+        return "redirect:/admin/account/list";
     }
 }
