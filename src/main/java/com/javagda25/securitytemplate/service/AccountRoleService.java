@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -33,4 +34,7 @@ public class AccountRoleService {
         return accountRoles;
     }
 
+    public List<AccountRole> getAll() {
+        return accountRoleRepository.findAll();
+    }
 }

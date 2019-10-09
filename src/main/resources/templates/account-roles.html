@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Roles list</title>
+    <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
+</head>
+<body>
+<th:block th:replace="fragments :: navigator" th:remove="tag"/>
+<div class="container">
+    <h1>Roles list of user <span th:text="${account.getUsername()}"></span></h1>
+    <div class="row col-md-12">
+        <form th:action="@{/admin/account/editRoles}" method="post" class="row col-12">
+            <div class="row col-md-12 list-header-row">
+                <div class="col-3">Name</div>
+                <div class="col-3">Previously</div>
+                <div class="col-3">Current</div>
+                <div class="col-3"></div>
+            </div>
+            <div th:each="role : ${roles}" class="row col-md-12 list-data-row">
+                <input type="hidden" th:name="accountId" th:value="${account.getId()}">
+                <div class="col-3" th:text="${role.getName()}"></div>
+                <div class="col-3">
+                    <input type="checkbox"
+                           th:checked="${account.getAccountRoles().contains(role)}" disabled></div>
+                <div class="col-3">
+                    <input type="checkbox" th:name="${role.getName()}"
+                           th:checked="${account.getAccountRoles().contains(role)}"></div>
+                <div class="row col-3">
+                </div>
+            </div>
+
+            <div class="row offset-md-9 col-md-3">
+                <button class="btn btn-primary col-12" type="submit">Wyślij</button>
+            </div>
+        </form>
+    </div>
+</div>
+<th:block th:replace="fragments :: footer" th:remove="tag"/>
+<th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</body>
+</html>
