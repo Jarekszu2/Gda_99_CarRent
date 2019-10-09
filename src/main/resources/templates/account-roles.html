@@ -14,20 +14,23 @@
             <div class="row col-md-12 list-header-row">
                 <div class="col-3">Name</div>
                 <div class="col-3">Previously</div>
-                <div class="col-3">Current</div>
                 <div class="col-3"></div>
+                <div class="col-3">Current</div>
             </div>
             <div th:each="role : ${roles}" class="row col-md-12 list-data-row">
-                <input type="hidden" th:name="accountId" th:value="${account.getId()}">
+                <input type="hidden" th:name="accountId" th:value="${account.getId()}" >
                 <div class="col-3" th:text="${role.getName()}"></div>
+                <div class="row col-3">
+                </div>
                 <div class="col-3">
                     <input type="checkbox"
                            th:checked="${account.getAccountRoles().contains(role)}" disabled></div>
                 <div class="col-3">
                     <input type="checkbox" th:name="${role.getName()}"
                            th:checked="${account.getAccountRoles().contains(role)}"></div>
-                <div class="row col-3">
-                </div>
+
+                <!--<div th:each="i : ${#numbers.sequence(1, 10)}">-->
+                <!--</div>-->
             </div>
 
             <div class="row offset-md-9 col-md-3">

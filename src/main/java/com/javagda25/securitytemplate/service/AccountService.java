@@ -84,6 +84,7 @@ public class AccountService {
         if (accountRepository.existsById(accountId)) {
             Account account = accountRepository.getOne(accountId);
 
+            // kluczem w form parameters jest nazwa parametru th:name
             Map<String, String[]> formParameters = request.getParameterMap();
             Set<AccountRole> newCollectionOfRoles = new HashSet<>();
 
