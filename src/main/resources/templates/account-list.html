@@ -17,10 +17,10 @@
             <div class="col-3"><!--Buttons--></div>
         </div>
         <div th:each="account : ${accounts}" class="row col-md-12 list-data-row">
-            <div class="col-3" th:text="${account.getId()}"></div>
-            <div class="col-3" th:text="${account.getUsername()}"></div>
-            <div class="col-3" th:text="${account.getAccountRoles()}"></div>
-            <div class="row col-3">
+            <div class="col-1" th:text="${account.getId()}"></div>
+            <div class="col-1" th:text="${account.getUsername()}"></div>
+            <div class="col-2" th:text="${account.getAccountRoles()}"></div>
+            <div class="row col-8">
                 <div class="col-3">
                     <a th:href="@{/admin/account/remove(accountId=${account.getId()})}">
                         <button th:disabled="${account.isAdmin()}" type="button" class="btn btn-danger">Remove

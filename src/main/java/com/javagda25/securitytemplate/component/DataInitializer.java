@@ -2,6 +2,7 @@ package com.javagda25.securitytemplate.component;
 
 import com.javagda25.securitytemplate.model.Account;
 import com.javagda25.securitytemplate.model.AccountRole;
+import com.javagda25.securitytemplate.model.Position;
 import com.javagda25.securitytemplate.repository.AccountRepository;
 import com.javagda25.securitytemplate.repository.AccountRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,8 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+
+import static com.javagda25.securitytemplate.model.Position.*;
 
 @Component
 public class DataInitializer implements ApplicationListener<ContextRefreshedEvent> {
@@ -29,18 +32,30 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        addDefaultRole("USER");
+//        addDefaultRole("USER");
         addDefaultRole("ADMIN");
+        addDefaultRole("GRUNT");
+        addDefaultRole("MANAGER");
+        addDefaultRole("CLIENT");
 
-        addDefaultUser("admin", "admin", "ADMIN", "USER");
-        addDefaultUser("user", "user", "USER");
+//        addDefaultUser("user", "user", "USER");
+        addDefaultUser("admin", "admin", "admin name", "admin surname", null, null, ADMIN, "ADMIN", "GRUNT", "MANAGER", "CLIENT");
+        addDefaultUser("manager", "manager", "manager name", "manager surname", null, null, MANAGER,  "GRUNT", "MANAGER");
+        addDefaultUser("grunt", "grunt", "grunt name", "grunt surname", null, null, GRUNT,  "GRUNT");
+        addDefaultUser("client", "client", "client name", "client surname","email", "address", CLIENT, "CLIENT");
+
     }
 
-    private void addDefaultUser(String username, String password, String... roles) {
+    private void addDefaultUser(String username, String password, String name, String surname, String email, String address, Position position, String... roles) {
         if (!accountRepository.existsByUsername(username)) {
             Account account = new Account();
-            account.setUsername(username);
             account.setPassword(passwordEncoder.encode(password));
+            account.setUsername(username);
+            account.setName(name);
+            account.setSurname(surname);
+            account.setEmail(email);
+            account.setAddress(address);
+            account.setPosition(position);
 
             Set<AccountRole> userRoles = findRoles(roles);
             account.setAccountRoles(userRoles);

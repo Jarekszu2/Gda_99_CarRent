@@ -1,15 +1,14 @@
 package com.javagda25.securitytemplate.model;
 
 import com.sun.xml.bind.v2.model.core.ID;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Cascade;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Set;
@@ -36,6 +35,29 @@ public class Account {
     private Set<AccountRole> accountRoles;
 
     private boolean locked;
+
+    @NotEmpty
+    private String name;
+    @NotEmpty
+    private String surname;
+//    @NotEmpty
+    private String email;
+//    @NotEmpty
+    private String address;
+
+    @NotNull
+    @Enumerated(value = EnumType.STRING)
+    private Position position;
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    private Set<Booking> bookingsClient;
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+    private Set<Booking> bookingsEmployee;
 
     public boolean isAdmin() {
         return accountRoles.stream()
