@@ -18,12 +18,13 @@ public class Car {
 
     @NotNull
     private String name;
+
     @NotNull
     private double price;
-    @NotEmpty
+
     @NotNull
     private int mileage;
-    @NotEmpty
+
     @NotNull
     private CarStatus carStatus;
 

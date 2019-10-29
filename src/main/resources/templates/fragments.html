@@ -24,8 +24,10 @@
                 </svg>
             </a>
             <a class="py-2 d-none d-md-inline-block" th:href="@{/}">Home</a>
+            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('GRUNT')" th:href="@{/car/list}">Car list</a>
+            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('GRUNT')" th:href="@{/car/add}">Car add</a>
             <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('ADMIN')" th:href="@{/tylkodlakozakow}">Kozaki</a>
-            <a class="py-2 d-none d-md-inline-block" th:href="@{/admin/account/list}">Account list</a>
+            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('MANAGER')" th:href="@{/admin/account/list}">Account list</a>
             <div class="py-2 d-none d-md-inline-block">
                 <a class="maj-2 d-none d-md-inline-block" sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
                 <a class="maj-2 d-none d-md-inline-block" sec:authorize="!isAuthenticated()" th:href="@{/user/register}">Register</a>
