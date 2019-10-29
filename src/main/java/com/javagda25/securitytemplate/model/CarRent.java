@@ -20,5 +20,11 @@ public class CarRent {
     @OneToOne
     private Booking booking;
 
+    @OneToOne
+    private CarReturn carReturn;
+
+    @OneToOne
+    private Income income;
+
     private String commentsCarRent;
 }

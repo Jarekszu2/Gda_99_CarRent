@@ -2,24 +2,31 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Car add</title>
+    <title>Car details</title>
     <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
 </head>
 <body>
 <th:block th:replace="fragments :: navigator" th:remove="tag"/>
 <div class="container">
-    <h1>Car add</h1>
-    <form th:action="@{/car/add}" method="post" th:object="${car}">
+    <h1>Car details</h1>
+    <form th:action="@{/car/details}" method="post" th:object="${car}">
         <div class="row col-12 form-container">
 
-            <input type="hidden" th:field="*{idCar}" th:value="*{idCar}">
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="idCar">Car id:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="number" id="idCar" th:name="idCar" th:value="*{idCar}">
+                </div>
+            </div>
 
             <div class="row col-md-12 form-input-row">
                 <div class="col-md-6">
                     <label for="name">Name:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="text" id="name" th:name="name">
+                    <input class="form-control" type="text" id="name" th:name="name" th:value="*{name}">
                 </div>
             </div>
 
@@ -28,7 +35,7 @@
                     <label for="regNr">Reg nr:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="text" minlength="5" id="regNr" th:name="regNr">
+                    <input class="form-control" type="text" id="regNr" th:name="regNr" th:value="*{regNr}">
                 </div>
             </div>
 
@@ -37,7 +44,7 @@
                     <label for="price">Price:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="number" min="0" step="0.01" id="price" th:name="price">
+                    <input class="form-control" type="number" id="price" th:name="price" th:value="*{price}">
                 </div>
             </div>
 
@@ -46,7 +53,7 @@
                     <label for="mileage">Mileage:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="number" min="0" id="mileage" th:name="mileage">
+                    <input class="form-control" type="number" id="mileage" th:name="mileage" th:value="*{mileage}">
                 </div>
             </div>
 
@@ -55,7 +62,7 @@
                     <label for="feeForCleaning">Fee for cleaning:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="number" min="0" id="feeForCleaning" th:name="feeForCleaning">
+                    <input class="form-control" type="number" id="feeForCleaning" th:name="feeForCleaning" th:value="*{feeForCleaning}">
                 </div>
             </div>
 
@@ -64,31 +71,35 @@
                     <label for="feeForFuel">Fee for fuel:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="number" min="0" id="feeForFuel" th:name="feeForFuel">
+                    <input class="form-control" type="number" id="feeForFuel" th:name="feeForFuel" th:value="*{feeForFuel}">
                 </div>
             </div>
 
             <div class="row col-md-12 form-input-row">
                 <div class="col-md-6">
-                    <!--<label for="status">Car status:</label>-->
-                    <label >Car status:</label>
+                    <label for="status">Status:</label>
                 </div>
                 <div class="col-md-6">
-                    <!--<input class="form-control" type="number" id="status" th:name="status">-->
-                    <select th:field="*{carStatus}">
-                        <option th:each="status : ${statuses}" th:text="${status}" th:value="${status}"></option>
-                    </select>
+                    <input class="form-control" type="text" id="status" th:name="status" th:value="*{carStatus}">
                 </div>
             </div>
 
-            <div class="row col-md-12 form-button-row">
-                <div class="col-md-6">
-                    <button type="reset" class="btn btn-warning offset-3 col-md-6">Reset</button>
-                </div>
-                <div class="col-md-6">
-                    <button type="submit" class="btn btn-primary offset-3 col-md-6">Submit</button>
+            <div class="row col-md-12">
+                <div class="offset-6 col-md-6">
+                    <a th:href="@{${referer}}">
+                        <button type="button" class="btn btn-primary offset-3 col-md-6">Back</button>
+                    </a>
                 </div>
             </div>
+
+            <!--<div class="row col-md-12 form-button-row">-->
+                <!--<div class="col-md-6">-->
+                    <!--<button type="reset" class="btn btn-warning offset-3 col-md-6">Reset</button>-->
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                    <!--<button type="submit" class="btn btn-primary offset-3 col-md-6">Submit</button>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
     </form>
 </div>

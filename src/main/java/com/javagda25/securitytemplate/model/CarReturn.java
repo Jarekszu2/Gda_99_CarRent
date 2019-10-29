@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -22,6 +23,13 @@ public class CarReturn {
 
     @OneToOne
     private CarRent carRent;
+
+//    @Formula(value = )
+    private double additionalPaymentForDelay;
+
+    private double additionalPaymentForCleaning;
+
+    private double additionalPaymentForFuel;
 
     private String commentsCarReturn;
 }

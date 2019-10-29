@@ -41,6 +41,9 @@ public class Booking {
     @OneToOne
     private CarRent carRent;
 
+//    @Formula(value = )
+    private double cancellation;
+
 //    @Formula(value = "select timestampdiff(DAY, booking.date_end, booking.date_start) * car.getPrice()")
 //    private double amount;
 }

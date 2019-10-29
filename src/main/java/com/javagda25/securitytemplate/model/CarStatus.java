@@ -4,5 +4,5 @@ public enum  CarStatus {
     AVAILABLE,
     BOOKED,
     DAMAGED,
-    SERVICED;
+    SERVICED
 }

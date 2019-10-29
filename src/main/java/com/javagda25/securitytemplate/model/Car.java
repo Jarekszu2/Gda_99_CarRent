@@ -20,6 +20,9 @@ public class Car {
     private String name;
 
     @NotNull
+    private String regNr;
+
+    @NotNull
     private double price;
 
     @NotNull
@@ -27,6 +30,12 @@ public class Car {
 
     @NotNull
     private CarStatus carStatus;
+
+    @NotNull
+    private double feeForCleaning;
+
+    @NotNull
+    private double feeForFuel;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
