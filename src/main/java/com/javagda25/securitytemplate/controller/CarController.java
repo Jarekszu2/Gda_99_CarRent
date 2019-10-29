@@ -4,6 +4,8 @@ import com.javagda25.securitytemplate.model.Car;
 import com.javagda25.securitytemplate.model.CarStatus;
 import com.javagda25.securitytemplate.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,9 +30,13 @@ public class CarController {
     }
 
     @GetMapping("/list")
-    public String list(Model model) {
-        List<Car> cars = carService.getAll();
-        model.addAttribute("cars", cars);
+    public String list(Principal principal,
+                        Model model,
+                       @RequestParam(name = "page", defaultValue = "0") int page,
+                       @RequestParam(name = "size", defaultValue = "2") int size) {
+//        principal.getName() nazwa zalogowanego uzytkownika
+        Page<Car> carPage = carService.getPage(PageRequest.of(page, size));
+        model.addAttribute("cars", carPage);
         return "car-list";
     }
 

@@ -36,18 +36,19 @@ public class Account {
 
     private boolean locked;
 
-    @NotEmpty
+    @NotNull
     private String name;
-    @NotEmpty
+    @NotNull
     private String surname;
-//    @NotEmpty
+    @NotNull
     private String email;
-//    @NotEmpty
+    @NotNull
     private String address;
+//    można dodać trl do kontaktu i NIP do faktury
 
     @NotNull
     @Enumerated(value = EnumType.STRING)
-    private Position position;
+    private Position position = Position.CLIENT;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

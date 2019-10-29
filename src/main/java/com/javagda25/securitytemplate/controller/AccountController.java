@@ -60,4 +60,6 @@ public class AccountController {
 
         return "registration-form";
     }
+
+    @GetMapping
 }

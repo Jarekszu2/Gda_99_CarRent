@@ -64,18 +64,18 @@
                     <label for="feeForFuel">Fee for fuel:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="number" min="0" id="feeForFuel" th:name="feeForFuel">
+                    <input class="form-control" type="number" min="0" id="feeForFuel" th:name="feeForFuel" th:value="*{feeForFuel}">
                 </div>
             </div>
 
             <div class="row col-md-12 form-input-row">
                 <div class="col-md-6">
                     <!--<label for="status">Car status:</label>-->
-                    <label >Car status:</label>
+                    <label for="stat">Car status:</label>
                 </div>
                 <div class="col-md-6">
                     <!--<input class="form-control" type="number" id="status" th:name="status">-->
-                    <select th:field="*{carStatus}">
+                    <select id="stat" th:field="*{carStatus}">
                         <option th:each="status : ${statuses}" th:text="${status}" th:value="${status}"></option>
                     </select>
                 </div>

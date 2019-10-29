@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
@@ -35,7 +36,7 @@ public class AccountService {
 
         // szyfrowanie hasła
         account.setPassword(passwordEncoder.encode(account.getPassword()));
-        account.setAccountRoles(accountRoleService.getDefaultRoles());
+        account.setAccountRoles(accountRoleService.getDefaultRoles()); // TUTAJ USTAW ROLE
 
         // zapis do bazy
         accountRepository.save(account);
@@ -104,5 +105,13 @@ public class AccountService {
 
             accountRepository.save(account);
         }
+    }
+
+    public Account findByUsername(String name) {
+        Optional<Account> accountOptional = accountRepository.findByUsername(name);
+        if (accountOptional.isPresent()) {
+            return accountOptional.get();
+        }
+        throw new EntityNotFoundException("Not found");
     }
 }

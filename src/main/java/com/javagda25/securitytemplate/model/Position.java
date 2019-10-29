@@ -4,5 +4,5 @@ public enum  Position {
     MANAGER,
     ADMIN,
     CLIENT,
-    GRUNT;
+    GRUNT
 }

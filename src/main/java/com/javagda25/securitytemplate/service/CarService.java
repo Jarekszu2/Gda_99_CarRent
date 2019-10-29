@@ -3,6 +3,8 @@ package com.javagda25.securitytemplate.service;
 import com.javagda25.securitytemplate.model.Car;
 import com.javagda25.securitytemplate.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,5 +30,13 @@ public class CarService {
 
     public Optional<Car> getById(Long carId) {
         return carRepository.findById(carId);
+    }
+
+//    public Page<Author> getPage(PageRequest of) {
+//        return authorRepository.findAll(of);
+//    }
+
+    public Page<Car> getPage(PageRequest of) {
+        return carRepository.findAll(of);
     }
 }
