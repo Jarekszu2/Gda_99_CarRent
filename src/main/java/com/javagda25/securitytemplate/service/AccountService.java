@@ -2,6 +2,7 @@ package com.javagda25.securitytemplate.service;
 
 import com.javagda25.securitytemplate.model.Account;
 import com.javagda25.securitytemplate.model.AccountRole;
+import com.javagda25.securitytemplate.model.Booking;
 import com.javagda25.securitytemplate.model.dto.AccountPasswordResetRequest;
 import com.javagda25.securitytemplate.repository.AccountRepository;
 import com.javagda25.securitytemplate.repository.AccountRoleRepository;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.*;
 
 @Service
@@ -113,5 +115,9 @@ public class AccountService {
             return accountOptional.get();
         }
         throw new EntityNotFoundException("Not found");
+    }
+
+    public void save(Account account) {
+        accountRepository.save(account);
     }
 }

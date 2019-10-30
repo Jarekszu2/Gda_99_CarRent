@@ -1,6 +1,7 @@
 package com.javagda25.securitytemplate.service;
 
 import com.javagda25.securitytemplate.model.Car;
+import com.javagda25.securitytemplate.model.CarStatus;
 import com.javagda25.securitytemplate.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,6 +23,10 @@ public class CarService {
 
     public List<Car> getAll() {
         return carRepository.findAll();
+    }
+
+    public List<Car> getCarsByStatus(CarStatus status) {
+        return carRepository.findAllByCarStatus(status);
     }
 
     public void save(Car car) {
