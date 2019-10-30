@@ -55,10 +55,10 @@ public class Account {
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private Set<Booking> bookingsClient;
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
-    private Set<Booking> bookingsEmployee;
+//    @ToString.Exclude
+//    @EqualsAndHashCode.Exclude
+//    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+//    private Set<Booking> bookingsEmployee;
 
     public boolean isAdmin() {
         return accountRoles.stream()

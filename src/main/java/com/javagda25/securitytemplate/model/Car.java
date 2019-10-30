@@ -37,6 +37,9 @@ public class Car {
     @NotNull
     private double feeForFuel;
 
+    @NotNull
+    private double cancellationCost;
+
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "car", fetch = FetchType.LAZY)
