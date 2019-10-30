@@ -8,7 +8,7 @@
 <body>
 <th:block th:replace="fragments :: navigator" th:remove="tag"/>
 <div class="container">
-    <h1>Car list</h1>
+    <h1>Booking list</h1>
     <div class="row col-md-12">
         <div class="row col-md-12 list-header-row">
             <div class="col-1">Booking id</div>
@@ -20,15 +20,15 @@
         </div>
         <div th:each="booking : ${bookings}" class="row col-md-12 list-data-row">
             <div class="col-1" th:text="${booking.getIdBooking()}"></div>
-            <div class="col-2" th:text="${booking.getBookingDateTime()}"></div>
+            <div class="col-2" th:text="${booking.getBookingDate()}"></div>
             <div class="col-2" th:text="${booking.getDateStart()}"></div>
             <div class="col-2" th:text="${booking.getDateEnd()}"></div>
             <div class="col-2" th:text="${booking.getCar().getName()}"></div>
             <div class="row col-3">
                 <div class="col-12">
-                    <a th:href="@{/account/rentals/add}">
+                    <a th:href="@{/account/cancellation}">
                         <button type="button" class="btn btn-danger">
-                                Remove
+                                Cancellation
                         </button>
                     </a>
                 </div>

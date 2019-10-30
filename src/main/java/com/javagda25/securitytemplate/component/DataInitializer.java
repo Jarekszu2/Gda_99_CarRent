@@ -39,9 +39,9 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         addDefaultRole("CLIENT");
 
 //        addDefaultUser("user", "user", "USER");
-        addDefaultUser("admin", "admin", "admin name", "admin surname", null, null, ADMIN, "ADMIN", "GRUNT", "MANAGER", "CLIENT");
-        addDefaultUser("manager", "manager", "manager name", "manager surname", null, null, MANAGER,  "GRUNT", "MANAGER");
-        addDefaultUser("grunt", "a", "grunt name", "grunt surname", null, null, GRUNT,  "GRUNT");
+        addDefaultUser("admin", "admin", "admin name", "admin surname", "11", "22", ADMIN, "ADMIN", "GRUNT", "MANAGER", "CLIENT");
+        addDefaultUser("manager", "manager", "manager name", "manager surname", "33", "44", MANAGER,  "GRUNT", "MANAGER");
+        addDefaultUser("grunt", "a", "grunt name", "grunt surname", "55", "66", GRUNT,  "GRUNT");
         addDefaultUser("client", "client", "client name", "client surname","email", "address", CLIENT, "CLIENT");
 
     }

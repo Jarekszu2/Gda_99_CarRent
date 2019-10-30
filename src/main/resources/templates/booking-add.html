@@ -9,19 +9,18 @@
 <th:block th:replace="fragments :: navigator" th:remove="tag"/>
 <div class="container">
     <h1>Booking add</h1>
-    <form th:action="@{/account/booking-add}" method="post" th:object="${booking}">
+    <form th:action="@{/account/booking_add}" method="post" th:object="${booking}">
         <div class="row col-12 form-container">
 
-            <input type="hidden" th:field="*{idBooking}" th:value="*{idBooking}">
-
-            <input type="hidden" th:field="*{bookingDateTime}" th:value="*{bookingDateTime}">
+            <!--<input type="hidden" th:field="*{idBooking}" th:value="*{idBooking}">-->
+            <!--<input type="hidden" th:field="*{bookingDateTime}" th:value="*{bookingDateTime}">-->
 
             <div class="row col-md-12 form-input-row">
                 <div class="col-md-6">
                     <label for="dateStart">Date start:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="datetime-local" id="dateStart" th:name="*{dateStart}" th:value="*{dateStart}">
+                    <input class="form-control" type="date" id="dateStart" th:field="*{dateStart}">
                 </div>
             </div>
 
@@ -30,7 +29,7 @@
                     <label for="dateEnd">Date end:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="datetime-local" id="dateEnd" th:name="*{dateEnd}" th:value="*{dateEnd}">
+                    <input class="form-control" type="date" id="dateEnd" th:field="*{dateEnd}">
                 </div>
             </div>
 
@@ -38,11 +37,21 @@
                 <div class="col-md-6">
                     <label for="cars">Cars:</label>
                 </div>
-                <div class="col-md-6">g
-                    <select id="cars" th:field="*{car}">
-                        <option th:each="car : ${cars}" th:text="${car.getName()}" th:value="${car.getName()}"></option>
+                <!--<div class="col-md-6">-->
+                    <!--<select id="cars" th:field="*{car}">-->
+                        <!--<option th:each="car : ${cars}" th:text="${car.getName()}" th:value="${car.getName()}"></option>-->
+                    <!--</select>-->
+                <!--</div>-->
+
+                <div class="col-md-6">
+                    <select th:name="carId" id="cars" class="form-control col-md-12">
+                        <option th:each="car : ${cars}"
+                                th:text="${car.getName()}"
+                                th:value="${car.getIdCar()}"
+                                th:selected="${booking.getCar() != null && booking.getCar().getIdCar() == car.getIdCar()}"/>
                     </select>
                 </div>
+
             </div>
 
             <div class="row col-md-12 form-button-row">

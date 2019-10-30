@@ -64,35 +64,46 @@ public class BookingController {
     public String addRent(Model model, Principal principal) {
         if (principal == null) {
             // nie jest zalogowany
-            // todo: zrob cos
             return "login-form";
         } else {
             Account account = accountService.findByUsername(principal.getName());
             model.addAttribute("bookings", account.getBookingsClient());
-// todo: wyświetl
             return "booking-list";
         }
     }
 
     @GetMapping("/booking_add")
-    public String addRent(Model model, Principal principal, Booking booking) {
+    public String addRent(Model model,
+                          Principal principal,
+                          Booking booking,
+                          @RequestParam(name = "carId", required = false) Long carId) {
         if (principal == null) {
             return "login-form";
         } else {
             Account account = accountService.findByUsername(principal.getName());
             booking.setClient(account);
-            List<Car> carsAvailable = carService.getCarsByStatus(CarStatus.AVAILABLE);
 
-            model.addAttribute("cars", carsAvailable);
+            if (carId != null) {
+                Car car = carService.getCarById(carId);
+                model.addAttribute("cars", car);
+            } else {
+                List<Car> carsAvailable = carService.getCarsByStatus(CarStatus.AVAILABLE);
+                model.addAttribute("cars", carsAvailable);
+            }
+
             model.addAttribute("booking", booking);
             return "booking-add";
         }
     }
 
     @PostMapping("/booking_add")
-    public String add(Booking booking, Principal principal) {
-        bookingService.save(booking);
+    public String addBook(Booking booking, Principal principal, Long carId) {
+        Car car = carService.getCarById(carId);
+        car.setCarStatus(CarStatus.BOOKED);
         Account account = accountService.findByUsername(principal.getName());
+        booking.setClient(account);
+        booking.setCar(car);
+        bookingService.save(booking);
         Set<Booking> bookingSet = account.getBookingsClient();
         bookingSet.add(booking);
         account.setBookingsClient(bookingSet);

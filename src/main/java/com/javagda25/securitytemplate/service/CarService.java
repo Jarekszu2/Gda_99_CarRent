@@ -37,6 +37,10 @@ public class CarService {
         return carRepository.findById(carId);
     }
 
+    public Car getCarById(Long carId) {
+        return carRepository.getOne(carId);
+    }
+
 //    public Page<Author> getPage(PageRequest of) {
 //        return authorRepository.findAll(of);
 //    }
