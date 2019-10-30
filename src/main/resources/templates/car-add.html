@@ -19,7 +19,7 @@
                     <label for="name">Name:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="text" id="name" th:name="name">
+                    <input class="form-control" type="text" id="name" th:name="name" th:value="*{name}">
                 </div>
             </div>
 
@@ -28,7 +28,7 @@
                     <label for="regNr">Reg nr:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="text" minlength="5" id="regNr" th:name="regNr">
+                    <input class="form-control" type="text" minlength="5" id="regNr" th:name="regNr" th:value="*{regNr}">
                 </div>
             </div>
 
@@ -37,7 +37,7 @@
                     <label for="price">Price:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="number" min="0" step="0.01" id="price" th:name="price">
+                    <input class="form-control" type="number" min="0" step="0.01" id="price" th:name="price" th:value="*{price}">
                 </div>
             </div>
 
@@ -46,7 +46,7 @@
                     <label for="mileage">Mileage:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="number" min="0" id="mileage" th:name="mileage">
+                    <input class="form-control" type="number" min="0" id="mileage" th:name="mileage" th:value="*{mileage}">
                 </div>
             </div>
 
@@ -55,7 +55,7 @@
                     <label for="feeForCleaning">Fee for cleaning:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="number" min="0" id="feeForCleaning" th:name="feeForCleaning">
+                    <input class="form-control" type="number" min="0" id="feeForCleaning" th:name="feeForCleaning" th:value="*{feeForCleaning}">
                 </div>
             </div>
 
@@ -64,7 +64,7 @@
                     <label for="feeForFuel">Fee for fuel:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="number" min="0" id="feeForFuel" th:name="feeForFuel">
+                    <input class="form-control" type="number" min="0" id="feeForFuel" th:name="feeForFuel" th:value="*{feeForFuel}">
                 </div>
             </div>
 
