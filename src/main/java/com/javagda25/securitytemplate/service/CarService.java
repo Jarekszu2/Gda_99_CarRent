@@ -37,6 +37,9 @@ public class CarService {
         return carRepository.findById(carId);
     }
 
+    public void remove(Long carId) {
+        carRepository.deleteById(carId);
+    }
 //    public Page<Author> getPage(PageRequest of) {
 //        return authorRepository.findAll(of);
 //    }

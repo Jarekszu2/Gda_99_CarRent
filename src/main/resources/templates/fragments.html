@@ -33,6 +33,7 @@
             <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')" th:href="@{/account/bookings}">Bookings</a>
             <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')" th:href="@{/account/booking_add}">Booking add</a>
             <div class="py-2 d-none d-md-inline-block">
+                <!--TODO zrobić sticky account do login-->
                 <a class="maj-2 d-none d-md-inline-block" sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
                 <a class="maj-2 d-none d-md-inline-block" sec:authorize="!isAuthenticated()" th:href="@{/user/register}">Register</a>
                 <a class="maj-2 d-none d-md-inline-block" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>

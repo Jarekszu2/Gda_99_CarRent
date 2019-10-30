@@ -8,10 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
@@ -70,4 +67,35 @@ public class CarController {
         }
         return "redirect:/car/list";
     }
+
+    @GetMapping("/remove")
+    public String remove(
+            HttpServletRequest request,
+            @RequestParam(name = "carId") Long carId) {
+        String referer = request.getHeader("referer");
+        carService.remove(carId);
+
+        if (referer != null) {
+            return "redirect:" + referer;
+        }
+        return "redirect:/car/list";
+    }
+
+    @GetMapping("/edit")
+    public String editCar(Model model, @RequestParam(name = "carId") Long carId) {
+        Optional<Car> carOptional = carService.getById(carId);
+        CarStatus[] statuses = CarStatus.values();
+
+
+        if (carOptional.isPresent()) {
+
+            model.addAttribute("car", carOptional.get());
+            model.addAttribute("statuses", statuses);
+
+            return "car-add";
+        }
+
+        return "redirect:/car/list";
+    }
+
 }
