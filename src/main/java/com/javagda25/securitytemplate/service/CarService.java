@@ -34,14 +34,12 @@ public class CarService {
 
     public void remove(Long carId) {
         carRepository.deleteById(carId);
-
     }
 //    public Page<Author> getPage(PageRequest of) {
 //        return authorRepository.findAll(of);
 //    }
 
     public Page<Car> getPage(PageRequest of) {
-
         return carRepository.findAll(of);
     }
 }

@@ -22,10 +22,9 @@ public class Booking {
     @CreationTimestamp
     private LocalDateTime bookingDateTime;
 
-    @NotEmpty
     @NotNull
     private LocalDateTime dateStart;
-    @NotEmpty
+
     @NotNull
     private LocalDateTime dateEnd;
 

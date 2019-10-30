@@ -14,14 +14,16 @@
             <div th:if="${errorMessage != null}" class="row col-md-12 form-input-row">
                 <div class="col-md-12 alert alert-danger" th:text="${errorMessage}"></div>
             </div>
+
             <div class="row col-md-12 form-input-row">
                 <div class="col-md-6">
-                    <label for="username">Username:</label>
+                    <label for="login">Login:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="text" id="username" th:field="*{username}">
+                    <input class="form-control" type="text" id="login" th:field="*{username}">
                 </div>
             </div>
+
             <div class="row col-md-12 form-input-row">
                 <div class="col-md-6">
                     <label for="password">Password:</label>
@@ -30,6 +32,7 @@
                     <input class="form-control" type="password" id="password" th:field="*{password}">
                 </div>
             </div>
+
             <div class="row col-md-12 form-input-row">
                 <div class="col-md-6">
                     <label for="password-confirm">Password confirm:</label>
@@ -38,6 +41,43 @@
                     <input class="form-control" type="password" id="password-confirm" th:name="passwordConfirm">
                 </div>
             </div>
+
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="name">Name:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="name" th:field="*{name}">
+                </div>
+            </div>
+
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="surname">Surname:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="surname" th:field="*{surname}">
+                </div>
+            </div>
+
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="email">Email:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="email" th:field="*{email}">
+                </div>
+            </div>
+
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="address">Address:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="address" th:field="*{address}">
+                </div>
+            </div>
+
             <div class="row col-md-12 form-button-row">
                 <div class="col-md-6">
                     <button type="reset" class="btn btn-warning offset-3 col-md-6">Reset</button>
