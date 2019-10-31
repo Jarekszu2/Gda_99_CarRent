@@ -36,6 +36,19 @@ public class BookingController {
     @Autowired
     private CarService carService;
 
+    @GetMapping("/client")
+    public String client(Model model,
+                         Principal principal) {
+        if (principal == null) {
+            // nie jest zalogowany
+            return "login-form";
+        } else {
+            Account account = accountService.findByUsername(principal.getName());
+            model.addAttribute("account", account);
+            return "booking-account";
+        }
+    }
+
     @GetMapping("/car_list")
     public String carAvailableList(Model model,
                                    @RequestParam(name = "page", defaultValue = "0") int page,
@@ -108,6 +121,28 @@ public class BookingController {
         bookingSet.add(booking);
         account.setBookingsClient(bookingSet);
         accountService.save(account);
+        return "redirect:/account/bookings";
+    }
+
+    @GetMapping("/cancellation")
+    public String cancellation(Model model,
+                               HttpServletRequest request,
+                               @RequestParam(name = "idBooking") Long idBooking) {
+
+        Booking booking = bookingService.getBookingById(idBooking);
+        model.addAttribute("booking", booking);
+        model.addAttribute("referer", request.getHeader("referer"));
+
+        return "booking-cancellation";
+    }
+
+    @PostMapping("/cancellation")
+    public String postCancellation(Booking booking) {
+        booking.setCanceled(true);
+        Car car = booking.getCar();
+        car.setCarStatus(CarStatus.AVAILABLE);
+        booking.setCar(car);
+        bookingService.save(booking);
         return "redirect:/account/bookings";
     }
 }

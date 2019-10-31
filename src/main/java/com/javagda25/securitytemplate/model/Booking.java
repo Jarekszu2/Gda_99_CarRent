@@ -31,8 +31,7 @@ public class Booking {
     private LocalDate dateStart;
 
     @NotNull
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate dateEnd;
+    private int hiresDays;
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    private Account employee;
