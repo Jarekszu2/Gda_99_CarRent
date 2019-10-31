@@ -31,7 +31,7 @@ public class GruntController {
                            @RequestParam(name = "size", defaultValue = "2") int size) {
         Page<Car> carPage = gruntService.getPageCars(PageRequest.of(page, size));
         model.addAttribute("cars", carPage);
-        return "grunt-list";
+        return "car-list";
     }
 
     @GetMapping("/add_car")
