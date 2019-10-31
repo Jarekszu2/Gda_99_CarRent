@@ -28,7 +28,8 @@
             <div class="col-1" th:text="${booking.isCanceled()}"></div>
             <div class="row col-2">
                 <div class="col-12">
-                    <a th:href="@{/account/cancellation(idBooking=${booking.getIdBooking()})}">
+                    <a th:if="${!booking.isCanceled()}"
+                            th:href="@{/account/cancellation(idBooking=${booking.getIdBooking()})}">
                         <button type="button" class="btn btn-danger">
                                 Cancellation
                         </button>

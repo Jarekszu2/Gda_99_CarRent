@@ -52,7 +52,8 @@ public class BookingController {
     @GetMapping("/car_list")
     public String carAvailableList(Model model,
                                    @RequestParam(name = "page", defaultValue = "0") int page,
-                                   @RequestParam(name = "size", defaultValue = "2") int size) {
+                                   @RequestParam(name = "size", defaultValue = "2") int size,
+                                   @RequestParam(name = "avail", defaultValue = "AVAILABLE") String avail) {
             Page<Car> carPage = carService.getPageCars(PageRequest.of(page, size));
             model.addAttribute("cars", carPage);
             return "carForClient-list";
@@ -110,7 +111,7 @@ public class BookingController {
     }
 
     @PostMapping("/booking_add")
-    public String addBook(Booking booking, Principal principal, Long carId) {
+    public String addBook(Model model, Booking booking, Principal principal, Long carId) {
         Car car = carService.getCarById(carId);
         car.setCarStatus(CarStatus.BOOKED);
         Account account = accountService.findByUsername(principal.getName());
@@ -121,7 +122,9 @@ public class BookingController {
         bookingSet.add(booking);
         account.setBookingsClient(bookingSet);
         accountService.save(account);
-        return "redirect:/account/bookings";
+
+        model.addAttribute("unconfirmed", booking);
+        return "booking-summary";
     }
 
     @GetMapping("/cancellation")
