@@ -13,15 +13,25 @@
         <div class="row col-md-12 list-header-row">
             <div class="col-1">Id</div>
             <div class="col-2">Name</div>
-            <div class="col-2">RegNr</div>
+            <div class="col-2">Hire/day</div>
             <div class="col-2">Status</div>
             <div class="col-5"><!--Buttons--></div>
         </div>
         <div th:each="car : ${cars}" class="row col-md-12 list-data-row">
             <div class="col-1" th:text="${car.getIdCar()}"></div>
             <div class="col-2" th:text="${car.getName()}"></div>
-            <div class="col-2" th:text="${car.getRegNr()}"></div>
+            <div class="col-2" th:text="${car.getPrice()}"></div>
             <div class="col-2" th:text="${car.getCarStatus()}"></div>
+
+            <!--<div class="col-2">-->
+                <!--<select th:name="publishingHouseId" id="publishingHouseId" class="form-control col-md-12">-->
+                    <!--<option th:each="ph : ${publishingHouses}"-->
+                            <!--th:text="${ph.getName()}"-->
+                            <!--th:value="${ph.getId()}"-->
+                            <!--th:selected="${book.getPublishingHouse() != null && book.getPublishingHouse().getId() == ph.getId()}"/>-->
+                <!--</select>-->
+            <!--</div>-->
+
             <div class="row col-5">
                 <!--<div class="col-4">-->
                     <!--<a th:href="@{/car/remove(carId=${car.getIdCar()})}">-->
@@ -44,6 +54,16 @@
                         </button>
                     </a>
                 </div>
+
+                <div class="col-4">
+                    <a th:href="@{/account/booking_add(carId=${car.getIdCar()})}">
+                    <!--<a th:href="@{/account/booking_add}">-->
+                        <button type="button" class="btn btn-primary">
+                            Book
+                        </button>
+                    </a>
+                </div>
+
             </div>
         </div>
 
@@ -52,7 +72,7 @@
                 <ul class="pagination">
                     <li class="page-item" th:if="${cars.getNumber() >0}">
                         <a class="page-link"
-                           th:href="@{/car/list(page=${cars.getNumber()-1}, size=${cars.getSize()})}">Previous</a>
+                           th:href="@{/account/car_list(page=${cars.getNumber()-1}, size=${cars.getSize()})}">Previous</a>
                     </li>
                     <li class="page-item"
                         th:each="number : ${#numbers.sequence(cars.getNumber()-3, cars.getNumber()-1)}"
@@ -68,7 +88,7 @@
                     </li>
                     <li class="page-item" th:if="${cars.getNumber() < cars.getTotalPages()-1}">
                         <a class="page-link"
-                           th:href="@{/car/list(page=${cars.getNumber()+1}, size=${cars.getSize()})}">Next</a>
+                           th:href="@{/account/car_list(page=${cars.getNumber()+1}, size=${cars.getSize()})}">Next</a>
                     </li>
                 </ul>
             </nav>

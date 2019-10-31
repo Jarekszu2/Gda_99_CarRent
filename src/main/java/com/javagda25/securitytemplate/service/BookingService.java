@@ -17,4 +17,8 @@ public class BookingService {
     public void save(Booking booking) {
         bookingRepository.save(booking);
     }
+
+    public Booking getBookingById(Long id) {
+        return bookingRepository.getOne(id);
+    }
 }

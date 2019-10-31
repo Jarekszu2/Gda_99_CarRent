@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Client</title>
+    <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
+</head>
+<body>
+<th:block th:replace="fragments :: navigator" th:remove="tag"/>
+<div class="container">
+    <h1>Client</h1>
+    <form th:action="@{/account/client}" method="post" th:object="${account}">
+        <div class="row col-12 form-container">
+
+            <!--<div class="row col-md-12 form-input-row">-->
+                <!--<div class="col-md-6">-->
+                    <!--<label for="idCar">Car id:</label>-->
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                    <!--<input class="form-control" type="number" id="idCar" th:name="idCar" th:value="*{idCar}">-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="username">Username:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="username" th:name="username" th:value="*{username}">
+                </div>
+            </div>
+
+
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="password">Password:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="password" th:name="password" th:value="*{password}">
+                </div>
+            </div>
+
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="name">Name:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="name" th:name="name" th:value="*{name}">
+                </div>
+            </div>
+
+
+
+            <!--<div class="row col-md-12 form-input-row">-->
+                <!--<div class="col-md-6">-->
+                    <!--<label for="mileage">Mileage:</label>-->
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                    <!--<input class="form-control" type="number" id="mileage" th:name="mileage" th:value="*{mileage}">-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="row col-md-12 form-input-row">-->
+                <!--<div class="col-md-6">-->
+                    <!--<label for="feeForCleaning">Fee for cleaning:</label>-->
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                    <!--<input class="form-control" type="number" id="feeForCleaning" th:name="feeForCleaning" th:value="*{feeForCleaning}">-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="row col-md-12 form-input-row">-->
+                <!--<div class="col-md-6">-->
+                    <!--<label for="feeForFuel">Fee for fuel:</label>-->
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                    <!--<input class="form-control" type="number" id="feeForFuel" th:name="feeForFuel" th:value="*{feeForFuel}">-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="row col-md-12 form-input-row">-->
+                <!--<div class="col-md-6">-->
+                    <!--<label for="cancellationCost">Cost of cancellation:</label>-->
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                    <!--<input class="form-control" type="number" id="cancellationCost" th:name="cancellationCost" th:value="*{cancellationCost}">-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="row col-md-12 form-input-row">-->
+                <!--<div class="col-md-6">-->
+                    <!--<label for="status">Status:</label>-->
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                    <!--<input class="form-control" type="text" id="status" th:name="status" th:value="*{carStatus}">-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="row col-md-12">-->
+                <!--<div class="offset-6 col-md-6">-->
+                    <!--<a th:href="@{${referer}}">-->
+                        <!--<button type="button" class="btn btn-primary offset-3 col-md-6">Back</button>-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="row col-md-12 form-button-row">-->
+                <!--<div class="col-md-6">-->
+                    <!--<button type="reset" class="btn btn-warning offset-3 col-md-6">Reset</button>-->
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                    <!--<button type="submit" class="btn btn-primary offset-3 col-md-6">Submit</button>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+    </form>
+</div>
+<th:block th:replace="fragments :: footer" th:remove="tag"/>
+<th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</body>
+</html>

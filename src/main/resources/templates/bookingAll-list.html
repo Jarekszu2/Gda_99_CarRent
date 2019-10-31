@@ -28,9 +28,9 @@
             <div class="col-1" th:text="${booking.isCanceled()}"></div>
             <div class="row col-2">
                 <div class="col-12">
-                    <a th:href="@{/account/cancellation(idBooking=${booking.getIdBooking()})}">
+                    <a th:href="@{/grunt/rental(idBooking=${booking.getIdBooking()})}">
                         <button type="button" class="btn btn-danger">
-                                Cancellation
+                                Rental
                         </button>
                     </a>
                 </div>
@@ -51,32 +51,32 @@
             </div>
         </div>
 
-        <!--<div class="row col-md-12 justify-content-center">-->
-            <!--<nav aria-label="Page navigation example">-->
-                <!--<ul class="pagination">-->
-                    <!--<li class="page-item" th:if="${cars.getNumber() >0}">-->
-                        <!--<a class="page-link"-->
-                           <!--th:href="@{/car/listCars(page=${cars.getNumber()-1}, size=${cars.getSize()})}">Previous</a>-->
-                    <!--</li>-->
-                    <!--<li class="page-item"-->
-                        <!--th:each="number : ${#numbers.sequence(cars.getNumber()-3, cars.getNumber()-1)}"-->
-                        <!--th:if="${number >=0}">-->
-                        <!--<a class="page-link" th:href="@{/car/listCars(page=${number}, size=${cars.getSize()})}"-->
-                           <!--th:text="${number + 1}"></a>-->
-                    <!--</li>-->
-                    <!--<li class="page-item"-->
-                        <!--th:each="number : ${#numbers.sequence(cars.getNumber(), cars.getNumber()+3)}"-->
-                        <!--th:if="${number< cars.getTotalPages()}">-->
-                        <!--<a class="page-link" th:href="@{/car/listCars(page=${number}, size=${cars.getSize()})}"-->
-                           <!--th:text="${number + 1}"></a>-->
-                    <!--</li>-->
-                    <!--<li class="page-item" th:if="${cars.getNumber() < cars.getTotalPages()-1}">-->
-                        <!--<a class="page-link"-->
-                           <!--th:href="@{/car/listCars(page=${cars.getNumber()+1}, size=${cars.getSize()})}">Next</a>-->
-                    <!--</li>-->
-                <!--</ul>-->
-            <!--</nav>-->
-        <!--</div>-->
+        <div class="row col-md-12 justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item" th:if="${bookings.getNumber() >0}">
+                        <a class="page-link"
+                           th:href="@{/grunt/list_bookings(page=${bookings.getNumber()-1}, size=${bookings.getSize()})}">Previous</a>
+                    </li>
+                    <li class="page-item"
+                        th:each="number : ${#numbers.sequence(bookings.getNumber()-3, bookings.getNumber()-1)}"
+                        th:if="${number >=0}">
+                        <a class="page-link" th:href="@{/grunt/list_bookings(page=${number}, size=${bookings.getSize()})}"
+                           th:text="${number + 1}"></a>
+                    </li>
+                    <li class="page-item"
+                        th:each="number : ${#numbers.sequence(bookings.getNumber(), bookings.getNumber()+3)}"
+                        th:if="${number< bookings.getTotalPages()}">
+                        <a class="page-link" th:href="@{/grunt/list_bookings(page=${number}, size=${bookings.getSize()})}"
+                           th:text="${number + 1}"></a>
+                    </li>
+                    <li class="page-item" th:if="${bookings.getNumber() < bookings.getTotalPages()-1}">
+                        <a class="page-link"
+                           th:href="@{/grunt/list_bookings(page=${bookings.getNumber()+1}, size=${bookings.getSize()})}">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 
     </div>
 </div>
