@@ -44,7 +44,7 @@ public class Account {
     private String email;
     @NotNull
     private String address;
-//    można dodać trl do kontaktu i NIP do faktury
+//    można dodać tel do kontaktu i NIP do faktury
 
     @NotNull
     @Enumerated(value = EnumType.STRING)
