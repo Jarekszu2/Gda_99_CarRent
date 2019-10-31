@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Car list</title>
@@ -40,14 +41,14 @@
                         <!--<button type="button" class="btn btn-primary col-md-12">Edit</button>-->
                     <!--</a>-->
                 <!--</div>-->
-                <div class="col-4">
+                <div class="col-4" sec:authorize="hasRole('GRUNT')">
                     <a th:href="@{/grunt/remove(carId=${car.getIdCar()})}">
                         <button type="button" class="btn btn-danger">
                                 Remove
                         </button>
                     </a>
                 </div>
-                <div class="col-4">
+                <div class="col-4" sec:authorize="hasRole('GRUNT')">
                     <a th:href="@{/grunt/edit(carId=${car.getIdCar()})}">
                         <button type="button" class="btn btn-primary">
                             Edit
@@ -58,6 +59,14 @@
                     <a th:href="@{/grunt/details(carId=${car.getIdCar()})}">
                         <button type="button" class="btn btn-primary">
                             Details
+                        </button>
+                    </a>
+                </div>
+                <div class="col-4" sec:authorize="hasRole('CLIENT')">
+                    <a th:href="@{/account/booking_add(carId=${car.getIdCar()})}">
+                        <!--<a th:href="@{/account/booking_add}">-->
+                        <button type="button" class="btn btn-primary">
+                            Book
                         </button>
                     </a>
                 </div>
