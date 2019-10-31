@@ -6,7 +6,7 @@ import com.javagda25.securitytemplate.model.Car;
 import com.javagda25.securitytemplate.model.CarStatus;
 import com.javagda25.securitytemplate.service.AccountService;
 import com.javagda25.securitytemplate.service.BookingService;
-import com.javagda25.securitytemplate.service.CarService;
+import com.javagda25.securitytemplate.service.GruntService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -34,7 +34,7 @@ public class BookingController {
     private BookingService bookingService;
 
     @Autowired
-    private CarService carService;
+    private GruntService carService;
 
     @GetMapping("/client")
     public String client(Model model,
@@ -53,7 +53,7 @@ public class BookingController {
     public String carAvailableList(Model model,
                                    @RequestParam(name = "page", defaultValue = "0") int page,
                                    @RequestParam(name = "size", defaultValue = "2") int size) {
-            Page<Car> carPage = carService.getPage(PageRequest.of(page, size));
+            Page<Car> carPage = carService.getPageCars(PageRequest.of(page, size));
             model.addAttribute("cars", carPage);
             return "carForClient-list";
     }
@@ -137,7 +137,8 @@ public class BookingController {
     }
 
     @PostMapping("/cancellation")
-    public String postCancellation(Booking booking) {
+    public String postCancellation(Long idBooking) {
+        Booking booking = bookingService.getBookingById(idBooking);
         booking.setCanceled(true);
         Car car = booking.getCar();
         car.setCarStatus(CarStatus.AVAILABLE);

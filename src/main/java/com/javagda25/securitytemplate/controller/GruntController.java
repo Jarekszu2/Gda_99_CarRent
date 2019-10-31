@@ -1,8 +1,9 @@
 package com.javagda25.securitytemplate.controller;
 
+import com.javagda25.securitytemplate.model.Booking;
 import com.javagda25.securitytemplate.model.Car;
 import com.javagda25.securitytemplate.model.CarStatus;
-import com.javagda25.securitytemplate.service.CarService;
+import com.javagda25.securitytemplate.service.GruntService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,33 +15,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.security.Principal;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping(path = "/car/")
-public class CarController {
+@RequestMapping(path = "/grunt/")
+public class GruntController {
 
-    private CarService carService;
+    private GruntService gruntService;
 
     @Autowired
-    public CarController(CarService carService) {
-        this.carService = carService;
+    public GruntController(GruntService carService) {
+        this.gruntService = carService;
     }
 
-    @GetMapping("/list")
-    public String list(Principal principal,
-                        Model model,
-                       @RequestParam(name = "page", defaultValue = "0") int page,
-                       @RequestParam(name = "size", defaultValue = "2") int size) {
-//        principal.getName() nazwa zalogowanego uzytkownika
-        Page<Car> carPage = carService.getPage(PageRequest.of(page, size));
+    @GetMapping("/list_cars")
+    public String listCars(Model model,
+                           @RequestParam(name = "page", defaultValue = "0") int page,
+                           @RequestParam(name = "size", defaultValue = "2") int size) {
+        Page<Car> carPage = gruntService.getPageCars(PageRequest.of(page, size));
         model.addAttribute("cars", carPage);
         return "car-list";
     }
 
-    @GetMapping("/add")
+    @GetMapping("/add_car")
     public String addCar(Model model, Car car) {
         car.setCarStatus(CarStatus.AVAILABLE);
         CarStatus[] statuses = CarStatus.values();
@@ -50,15 +47,15 @@ public class CarController {
         return "car-add";
     }
 
-    @PostMapping("/add")
-    public String add(Car car) {
-        carService.save(car);
-        return "redirect:/car/list";
+    @PostMapping("/add_car")
+    public String postAddCar(Car car) {
+        gruntService.save(car);
+        return "redirect:/grunt/list_cars";
     }
 
     @GetMapping("/details")
     public String details(Model model, HttpServletRequest request, @RequestParam(name = "carId") Long carId) {
-        Optional<Car> optionalCar = carService.getById(carId);
+        Optional<Car> optionalCar = gruntService.getById(carId);
         if (optionalCar.isPresent()) {
             Car car = optionalCar.get();
 //            CarStatus[] statuses = CarStatus.values();
@@ -68,6 +65,21 @@ public class CarController {
             model.addAttribute("referer", request.getHeader("referer"));
             return "car-details";
         }
-        return "redirect:/car/list";
+        return "redirect:/grunt/list_cars";
+    }
+
+    @GetMapping("/list_bookings")
+    public String listBookings(Model model,
+                               @RequestParam(name = "page", defaultValue = "0") int page,
+                               @RequestParam(name = "size", defaultValue = "2") int size) {
+        Page<Booking> bookingPage = gruntService.getPageBookings(PageRequest.of(page, size));
+        model.addAttribute("bookings", bookingPage);
+        return "bookingAll-list";
+    }
+
+    @GetMapping("/add_rent")
+    public String addRent(Model model, Booking booking) {
+        model.addAttribute(booking);
+        return "rent-add";
     }
 }

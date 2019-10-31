@@ -9,7 +9,7 @@
 <th:block th:replace="fragments :: navigator" th:remove="tag"/>
 <div class="container">
     <h1>Booking cancellation</h1>
-    <form th:action="@{/account/cancelation}" method="post" th:object="${booking}">
+    <form th:action="@{/account/cancellation}" method="post" th:object="${booking}">
         <div class="row col-12 form-container">
 
             <!--<div class="row col-md-12 form-input-row">-->
@@ -17,9 +17,11 @@
                     <!--<label for="idBooking">Booking id:</label>-->
                 <!--</div>-->
                 <!--<div class="col-md-6">-->
-                    <!--<input class="form-control" type="number" id="idBooking" th:name="idBooking" th:value="*{idBooking}">-->
+                    <!--<input class="form-control" type="number" id="idBooking" th:name="idBooking" th:field="*{idBooking}">-->
                 <!--</div>-->
             <!--</div>-->
+
+            <input type="hidden" th:field="*{idBooking}" th:value="*{idBooking}">
 
             <div class="row col-md-12 form-input-row">
                 <div class="col-md-6">
@@ -58,9 +60,6 @@
             </div>
 
             <div class="row col-md-12 form-button-row">
-                <!--<div class="col-md-6">-->
-                    <!--<button type="reset" class="btn btn-warning offset-3 col-md-6">Reset</button>-->
-                <!--</div>-->
 
                 <div class="col-md-6">
                     <a th:href="@{${referer}}">
@@ -81,58 +80,6 @@
                 </div>
             </div>
 
-            <!--<div class="row col-md-12 form-input-row">-->
-                <!--<div class="col-md-6">-->
-                    <!--<label for="feeForCleaning">Fee for cleaning:</label>-->
-                <!--</div>-->
-                <!--<div class="col-md-6">-->
-                    <!--<input class="form-control" type="number" id="feeForCleaning" th:name="feeForCleaning" th:value="*{feeForCleaning}">-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="row col-md-12 form-input-row">-->
-                <!--<div class="col-md-6">-->
-                    <!--<label for="feeForFuel">Fee for fuel:</label>-->
-                <!--</div>-->
-                <!--<div class="col-md-6">-->
-                    <!--<input class="form-control" type="number" id="feeForFuel" th:name="feeForFuel" th:value="*{feeForFuel}">-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="row col-md-12 form-input-row">-->
-                <!--<div class="col-md-6">-->
-                    <!--<label for="cancellationCost">Cost of cancellation:</label>-->
-                <!--</div>-->
-                <!--<div class="col-md-6">-->
-                    <!--<input class="form-control" type="number" id="cancellationCost" th:name="cancellationCost" th:value="*{cancellationCost}">-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="row col-md-12 form-input-row">-->
-                <!--<div class="col-md-6">-->
-                    <!--<label for="status">Status:</label>-->
-                <!--</div>-->
-                <!--<div class="col-md-6">-->
-                    <!--<input class="form-control" type="text" id="status" th:name="status" th:value="*{carStatus}">-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="row col-md-12">-->
-                <!--<div class="offset-6 col-md-6">-->
-                    <!--<a th:href="@{${referer}}">-->
-                        <!--<button type="button" class="btn btn-primary offset-3 col-md-6">Back</button>-->
-                    <!--</a>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <!--<div class="row col-md-12 form-button-row">-->
-                <!--<div class="col-md-6">-->
-                    <!--<button type="reset" class="btn btn-warning offset-3 col-md-6">Reset</button>-->
-                <!--</div>-->
-                <!--<div class="col-md-6">-->
-                    <!--<button type="submit" class="btn btn-primary offset-3 col-md-6">Submit</button>-->
-                <!--</div>-->
-            <!--</div>-->
         </div>
     </form>
 </div>
