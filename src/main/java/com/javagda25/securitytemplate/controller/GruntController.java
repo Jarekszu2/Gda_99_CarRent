@@ -31,7 +31,7 @@ public class GruntController {
                            @RequestParam(name = "size", defaultValue = "2") int size) {
         Page<Car> carPage = gruntService.getPageCars(PageRequest.of(page, size));
         model.addAttribute("cars", carPage);
-        return "car-list";
+        return "grunt-list";
     }
 
     @GetMapping("/add_car")
@@ -80,22 +80,22 @@ public class GruntController {
         return "rent-add";
     }
 
-    @GetMapping("/remove")
-    public String remove(
-            HttpServletRequest request,
-            @RequestParam(name = "carId") Long carId) {
-        String referer = request.getHeader("referer");
-        carService.remove(carId);
-
-        if (referer != null) {
-            return "redirect:" + referer;
-        }
-        return "redirect:/car/list";
-    }
+//    @GetMapping("/remove")
+//    public String remove(
+//            HttpServletRequest request,
+//            @RequestParam(name = "carId") Long carId) {
+//        String referer = request.getHeader("referer");
+//        gruntService.remove(carId);
+//
+//        if (referer != null) {
+//            return "redirect:" + referer;
+//        }
+//        return "redirect:/car/list";
+//    }
 
     @GetMapping("/edit")
     public String editCar(Model model, @RequestParam(name = "carId") Long carId) {
-        Optional<Car> carOptional = carService.getById(carId);
+        Optional<Car> carOptional = gruntService.getById(carId);
         CarStatus[] statuses = CarStatus.values();
 
 
