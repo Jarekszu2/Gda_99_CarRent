@@ -41,22 +41,21 @@
                     <!--</a>-->
                 <!--</div>-->
                 <div class="col-4">
-                    <a th:href="@{/car/remove(carId=${car.getIdCar()})}">
+                    <a th:href="@{/grunt/remove(carId=${car.getIdCar()})}">
                         <button type="button" class="btn btn-danger">
                                 Remove
                         </button>
                     </a>
                 </div>
                 <div class="col-4">
-                    <a th:href="@{/car/edit(carId=${car.getIdCar()})}">
-                    <!--<a th:href="@{'/car/edit/'(carId=${car.getIdCar()})}">-->
+                    <a th:href="@{/grunt/edit(carId=${car.getIdCar()})}">
                         <button type="button" class="btn btn-primary">
                             Edit
                         </button>
                     </a>
                 </div>
                 <div class="col-4">
-                    <a th:href="@{/car/details(carId=${car.getIdCar()})}">
+                    <a th:href="@{/grunt/details(carId=${car.getIdCar()})}">
                         <button type="button" class="btn btn-primary">
                             Details
                         </button>

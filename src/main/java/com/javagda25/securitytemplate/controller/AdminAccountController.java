@@ -40,14 +40,14 @@ public class AdminAccountController {
     public String toggleLock(@RequestParam(name = "accountId") Long accountId) {
         accountService.toggleLock(accountId);
 
-        return "redirect:/admin/account/list";
+        return "redirect:/admin/account/listCars";
     }
 
     @GetMapping("/remove")
     public String remove(@RequestParam(name = "accountId") Long accountId) {
         accountService.remove(accountId);
 
-        return "redirect:/admin/account/list";
+        return "redirect:/admin/account/listCars";
     }
 
     @GetMapping("/resetPassword")
@@ -58,14 +58,14 @@ public class AdminAccountController {
             model.addAttribute("account", accountOptional.get());
             return "account-passwordreset";
         }
-        return "redirect:/admin/account/list";
+        return "redirect:/admin/account/listCars";
     }
 
     @PostMapping("/resetPassword")
     public String resetPassword(AccountPasswordResetRequest request) {
         accountService.resetPassword(request);
 
-        return "redirect:/admin/account/list";
+        return "redirect:/admin/account/listCars";
     }
 
     @GetMapping("/editRoles")
@@ -77,13 +77,13 @@ public class AdminAccountController {
 
             return "account-roles";
         }
-        return "redirect:/admin/account/list";
+        return "redirect:/admin/account/listCars";
     }
 
     @PostMapping("/editRoles")
     public String editRoles(Long accountId, HttpServletRequest request) {
         accountService.editRoles(accountId, request);
 
-        return "redirect:/admin/account/list";
+        return "redirect:/admin/account/listCars";
     }
 }

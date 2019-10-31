@@ -10,6 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -22,16 +23,15 @@ public class Booking {
     private Long idBooking;
 
     @CreationTimestamp
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime bookingDateTime;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate bookingDate;
 
     @NotNull
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime dateStart;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate dateStart;
 
     @NotNull
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
-    private LocalDateTime dateEnd;
+    private int hiresDays;
 
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    private Account employee;
@@ -45,7 +45,7 @@ public class Booking {
     @OneToOne
     private CarRent carRent;
 
-    private boolean cancellation = false;
+    private boolean canceled = false;
 
 //    @Formula(value = "select timestampdiff(DAY, booking.date_end, booking.date_start) * car.getPrice()")
 //    private double amount;
