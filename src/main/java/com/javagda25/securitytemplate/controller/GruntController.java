@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -29,11 +31,30 @@ public class GruntController {
     }
 
     @GetMapping("/list_cars")
-    public String listCars(Model model,
-                           @RequestParam(name = "page", defaultValue = "0") int page,
-                           @RequestParam(name = "size", defaultValue = "2") int size) {
-        Page<Car> carPage = gruntService.getPageCars(PageRequest.of(page, size));
+//    public String listCars(Model model,
+//                           @RequestParam(name = "page", defaultValue = "0") int page,
+//                           @RequestParam(name = "size", defaultValue = "2") int size) {
+//        Page<Car> carPage = gruntService.getPageCars(PageRequest.of(page, size));
+//        model.addAttribute("cars", carPage);
+//        return "car-list";
+//    }
+    public String carList(Model model,
+                                   @RequestParam(name = "page", defaultValue = "0") int page,
+                                   @RequestParam(name = "size", defaultValue = "4") int size,
+                                   @RequestParam(name = "available", defaultValue = "false") boolean available,
+                                   @RequestParam(name = "booked", defaultValue = "false") boolean booked,
+                                   @RequestParam(name = "rented", defaultValue = "false") boolean rented,
+                                   @RequestParam(name = "serviced", defaultValue = "false") boolean serviced) {
+        boolean allfalse = !available && !booked && !serviced;
+        List<String> statuses = new ArrayList<>();
+        if (available || allfalse) statuses.add("AVAILABLE");
+        if (booked) statuses.add("BOOKED");
+        if (rented) statuses.add("RENTED");
+        if (serviced) statuses.add("SERVICED");
+
+        Page<Car> carPage = gruntService.getPageCarsByStatus(statuses, PageRequest.of(page, size));
         model.addAttribute("cars", carPage);
+        model.addAttribute("statuses", statuses);
         return "car-list";
     }
 

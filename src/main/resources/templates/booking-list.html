@@ -14,7 +14,7 @@
             <div class="col-1">Booking id</div>
             <div class="col-2">Booking date/time</div>
             <div class="col-2">Booking start</div>
-            <div class="col-2">Rental days</div>
+            <div class="col-1">Rental days</div>
             <div class="col-2">Car</div>
             <div class="col-1">Canceled</div>
             <div class="col-2"><!--Buttons--></div>
@@ -23,18 +23,28 @@
             <div class="col-1" th:text="${booking.getIdBooking()}"></div>
             <div class="col-2" th:text="${booking.getBookingDate()}"></div>
             <div class="col-2" th:text="${booking.getDateStart()}"></div>
-            <div class="col-2" th:text="${booking.getHiresDays()}"></div>
+            <div class="col-1" th:text="${booking.getHiresDays()}"></div>
             <div class="col-2" th:text="${booking.getCar().getName()}"></div>
             <div class="col-1" th:text="${booking.isCanceled()}"></div>
-            <div class="row col-2">
-                <div class="col-12">
+            <div class="row col-3">
+                <div class="col-6">
                     <a th:if="${!booking.isCanceled()}"
-                            th:href="@{/account/cancellation(idBooking=${booking.getIdBooking()})}">
+                            th:href="@{/account/cancel(idBooking=${booking.getIdBooking()})}">
                         <button type="button" class="btn btn-danger">
-                                Cancellation
+                            Cancel
                         </button>
                     </a>
                 </div>
+
+                <div class="col-6">
+                    <a th:if="${!booking.isCanceled()}"
+                       th:href="@{/account/accept(idBooking=${booking.getIdBooking()})}">
+                        <button type="button" class="btn btn-warning">
+                            Accept
+                        </button>
+                    </a>
+                </div>
+
                 <!--<div class="col-4">-->
                     <!--<a th:href="@{/car/edit(carId=${car.getIdCar()})}">-->
                         <!--<button type="button" class="btn btn-primary">-->

@@ -5,6 +5,8 @@ import com.javagda25.securitytemplate.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BookingService {
     private BookingRepository bookingRepository;
@@ -20,5 +22,9 @@ public class BookingService {
 
     public Booking getBookingById(Long id) {
         return bookingRepository.getOne(id);
+    }
+
+    public List<Booking> listBookingsOfClient(Long idClient) {
+        return bookingRepository.findByClient_Id(idClient);
     }
 }

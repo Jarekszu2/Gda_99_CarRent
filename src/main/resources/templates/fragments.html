@@ -31,8 +31,8 @@
             <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('MANAGER')" th:href="@{/admin/account/list}">Account list</a>
             <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')" th:href="@{/account/client}">My account</a>
             <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')" th:href="@{/account/car_list}">Car list</a>
-            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')" th:href="@{/account/bookings}">Bookings</a>
             <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')" th:href="@{/account/booking_add}">Booking add</a>
+            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')" th:href="@{/account/bookings}">Booking list/accept</a>
             <div class="py-2 d-none d-md-inline-block">
                 <a class="maj-2 d-none d-md-inline-block" sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
                 <a class="maj-2 d-none d-md-inline-block" sec:authorize="!isAuthenticated()" th:href="@{/user/register}">Register</a>
