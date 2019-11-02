@@ -26,4 +26,13 @@ public class IndexController {
     public String loginForm(){
         return "login-form";
     }
+
+    @GetMapping("/faq")
+    public String faq(){ return "faq";}
+
+    @GetMapping("/contact-form")
+    public String contactFrom(){return "contact-form";}
+
+    @GetMapping("/rental-conditions")
+    public String rentalConditions(){return "rental-conditions";}
 }

@@ -6,3 +6,4 @@
 5 zmiana hasła klienta
 6 BookingController - jak i co wyrzucić do servisu
 7 if na html - login grunt: Bookings list - button rental powinien być tylko dla cancelled(false)
+8 http://localhost:8080/account/details?carId=1 - client przy dodawaniu samochodu może zmieniać jego "dane"
