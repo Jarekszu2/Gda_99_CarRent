@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Rentals</title>
+    <title>Accepted</title>
     <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
 </head>
 <body>
 <th:block th:replace="fragments :: navigator" th:remove="tag"/>
 <div class="container">
-    <h1>Booking list</h1>
+    <h1>Booking accepted list</h1>
     <div class="row col-md-12">
         <div class="row col-md-12 list-header-row">
             <div class="col-1">Booking id</div>
@@ -17,48 +17,36 @@
             <div class="col-1">Rental days</div>
             <div class="col-2">Car</div>
             <div class="col-1">Canceled</div>
+            <div class="col-1">Accepted</div>
             <div class="col-2"><!--Buttons--></div>
         </div>
         <div th:each="booking : ${bookings}" class="row col-md-12 list-data-row">
-            <div class="col-1" th:if="${!booking.isCanceled() and !booking.isAccepted()}" th:text="${booking.getIdBooking()}"></div>
-            <div class="col-2" th:if="${!booking.isCanceled() and !booking.isAccepted()}" th:text="${booking.getBookingDate()}"></div>
-            <div class="col-2" th:if="${!booking.isCanceled() and !booking.isAccepted()}" th:text="${booking.getDateStart()}"></div>
-            <div class="col-1" th:if="${!booking.isCanceled() and !booking.isAccepted()}" th:text="${booking.getHiresDays()}"></div>
-            <div class="col-2" th:if="${!booking.isCanceled() and !booking.isAccepted()}" th:text="${booking.getCar().getName()}"></div>
-            <div class="col-1" th:if="${!booking.isCanceled() and !booking.isAccepted()}" th:text="${booking.isCanceled()}"></div>
-            <div class="row col-3">
+            <div class="col-1" th:if="${booking.isAccepted()}" th:text="${booking.getIdBooking()}"></div>
+            <div class="col-2" th:if="${booking.isAccepted()}" th:text="${booking.getBookingDate()}"></div>
+            <div class="col-2" th:if="${booking.isAccepted()}" th:text="${booking.getDateStart()}"></div>
+            <div class="col-1" th:if="${booking.isAccepted()}" th:text="${booking.getHiresDays()}"></div>
+            <div class="col-2" th:if="${booking.isAccepted()}" th:text="${booking.getCar().getName()}"></div>
+            <div class="col-1" th:if="${booking.isAccepted()}" th:text="${booking.isCanceled()}"></div>
+            <div class="col-1" th:if="${booking.isAccepted()}" th:text="${booking.isAccepted()}"></div>
+            <div class="row col-2">
                 <div class="col-6">
-                    <a th:if="${!booking.isCanceled() and !booking.isAccepted()}"
-                            th:href="@{/account/cancel(idBooking=${booking.getIdBooking()})}">
-                        <button type="button" class="btn btn-danger">
-                            Cancel
-                        </button>
-                    </a>
+                    <!--<a th:if="${!booking.isCanceled()}"-->
+                            <!--th:href="@{/account/cancel(idBooking=${booking.getIdBooking()})}">-->
+                        <!--<button type="button" class="btn btn-danger">-->
+                            <!--Cancel-->
+                        <!--</button>-->
+                    <!--</a>-->
                 </div>
 
-                <div class="col-6">
-                    <a th:if="${!booking.isCanceled() and !booking.isAccepted()}"
-                       th:href="@{/account/accept(idBooking=${booking.getIdBooking()})}">
-                        <button type="button" class="btn btn-warning">
-                            Accept
-                        </button>
-                    </a>
-                </div>
-
-                <!--<div class="col-4">-->
-                    <!--<a th:href="@{/car/edit(carId=${car.getIdCar()})}">-->
-                        <!--<button type="button" class="btn btn-primary">-->
-                            <!--Edit-->
+                <!--<div class="col-6">-->
+                    <!--<a th:if="${!booking.isCanceled()}"-->
+                       <!--th:href="@{/account/accept(idBooking=${booking.getIdBooking()})}">-->
+                        <!--<button type="button" class="btn btn-warning">-->
+                            <!--Accept-->
                         <!--</button>-->
                     <!--</a>-->
                 <!--</div>-->
-                <!--<div class="col-4">-->
-                    <!--<a th:href="@{/car/details(carId=${car.getIdCar()})}">-->
-                        <!--<button type="button" class="btn btn-primary">-->
-                            <!--Details-->
-                        <!--</button>-->
-                    <!--</a>-->
-                <!--</div>-->
+
             </div>
         </div>
 

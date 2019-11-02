@@ -208,7 +208,20 @@ public class BookingController {
         Car car = booking.getCar();
         car.setCarStatus(CarStatus.RENTED);
         booking.setCar(car);
+        booking.setAccepted(true);
         bookingService.save(booking);
-        return "redirect:/account/bookings";
+        return "redirect:/account/bookings_accepted";
+    }
+
+    @GetMapping("/bookings_accepted")
+    public String getAcceptedBookings(Model model, Principal principal) {
+        if (principal == null) {
+            // nie jest zalogowany
+            return "login-form";
+        } else {
+            Account account = accountService.findByUsername(principal.getName());
+            model.addAttribute("bookings", account.getBookingsClient());
+            return "booking-accepted-list";
+        }
     }
 }
