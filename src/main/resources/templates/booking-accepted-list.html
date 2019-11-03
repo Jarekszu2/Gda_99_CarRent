@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Accepted</title>
+    <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
+</head>
+<body>
+<th:block th:replace="fragments :: navigator" th:remove="tag"/>
+<div class="container">
+    <h1>Booking accepted list</h1>
+    <div class="row col-md-12">
+        <div class="row col-md-12 list-header-row">
+            <div class="col-1">Booking id</div>
+            <div class="col-2">Booking date/time</div>
+            <div class="col-2">Booking start</div>
+            <div class="col-1">Rental days</div>
+            <div class="col-2">Car</div>
+            <div class="col-1">Canceled</div>
+            <div class="col-1">Accepted</div>
+            <div class="col-2"><!--Buttons--></div>
+        </div>
+        <div th:each="booking : ${bookings}" class="row col-md-12 list-data-row">
+            <div class="col-1" th:if="${booking.isAccepted()}" th:text="${booking.getIdBooking()}"></div>
+            <div class="col-2" th:if="${booking.isAccepted()}" th:text="${booking.getBookingDate()}"></div>
+            <div class="col-2" th:if="${booking.isAccepted()}" th:text="${booking.getDateStart()}"></div>
+            <div class="col-1" th:if="${booking.isAccepted()}" th:text="${booking.getHiresDays()}"></div>
+            <div class="col-2" th:if="${booking.isAccepted()}" th:text="${booking.getCar().getName()}"></div>
+            <div class="col-1" th:if="${booking.isAccepted()}" th:text="${booking.isCanceled()}"></div>
+            <div class="col-1" th:if="${booking.isAccepted()}" th:text="${booking.isAccepted()}"></div>
+            <div class="row col-2">
+                <div class="col-6">
+                    <!--<a th:if="${!booking.isCanceled()}"-->
+                            <!--th:href="@{/account/cancel(idBooking=${booking.getIdBooking()})}">-->
+                        <!--<button type="button" class="btn btn-danger">-->
+                            <!--Cancel-->
+                        <!--</button>-->
+                    <!--</a>-->
+                </div>
+
+                <!--<div class="col-6">-->
+                    <!--<a th:if="${!booking.isCanceled()}"-->
+                       <!--th:href="@{/account/accept(idBooking=${booking.getIdBooking()})}">-->
+                        <!--<button type="button" class="btn btn-warning">-->
+                            <!--Accept-->
+                        <!--</button>-->
+                    <!--</a>-->
+                <!--</div>-->
+
+            </div>
+        </div>
+
+        <!--<div class="row col-md-12 justify-content-center">-->
+            <!--<nav aria-label="Page navigation example">-->
+                <!--<ul class="pagination">-->
+                    <!--<li class="page-item" th:if="${cars.getNumber() >0}">-->
+                        <!--<a class="page-link"-->
+                           <!--th:href="@{/car/listCars(page=${cars.getNumber()-1}, size=${cars.getSize()})}">Previous</a>-->
+                    <!--</li>-->
+                    <!--<li class="page-item"-->
+                        <!--th:each="number : ${#numbers.sequence(cars.getNumber()-3, cars.getNumber()-1)}"-->
+                        <!--th:if="${number >=0}">-->
+                        <!--<a class="page-link" th:href="@{/car/listCars(page=${number}, size=${cars.getSize()})}"-->
+                           <!--th:text="${number + 1}"></a>-->
+                    <!--</li>-->
+                    <!--<li class="page-item"-->
+                        <!--th:each="number : ${#numbers.sequence(cars.getNumber(), cars.getNumber()+3)}"-->
+                        <!--th:if="${number< cars.getTotalPages()}">-->
+                        <!--<a class="page-link" th:href="@{/car/listCars(page=${number}, size=${cars.getSize()})}"-->
+                           <!--th:text="${number + 1}"></a>-->
+                    <!--</li>-->
+                    <!--<li class="page-item" th:if="${cars.getNumber() < cars.getTotalPages()-1}">-->
+                        <!--<a class="page-link"-->
+                           <!--th:href="@{/car/listCars(page=${cars.getNumber()+1}, size=${cars.getSize()})}">Next</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</nav>-->
+        <!--</div>-->
+
+    </div>
+</div>
+<th:block th:replace="fragments :: footer" th:remove="tag"/>
+<th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</body>
+</html>

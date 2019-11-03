@@ -9,12 +9,13 @@
 <th:block th:replace="fragments :: navigator" th:remove="tag"/>
 <div class="container">
     <h1>Account list</h1>
+    <div></div>
     <div class="row col-md-12">
         <div class="row col-md-12 list-header-row">
-            <div class="col-3">Id</div>
-            <div class="col-3">Username</div>
-            <div class="col-3">Roles</div>
-            <div class="col-3"><!--Buttons--></div>
+            <div class="col-3 font-weight-bold">Id</div>
+            <div class="col-3 font-weight-bold">Username</div>
+            <div class="col-3 font-weight-bold">Roles</div>
+            <div class="col-3 font-weight-bold"><!--Buttons--></div>
         </div>
         <div th:each="account : ${accounts}" class="row col-md-12 list-data-row">
             <div class="col-1" th:text="${account.getId()}"></div>

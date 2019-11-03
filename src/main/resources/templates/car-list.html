@@ -1,24 +1,74 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Car list</title>
+    <title>Car List</title>
     <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
 </head>
 <body>
 <th:block th:replace="fragments :: navigator" th:remove="tag"/>
 <div class="container">
-    <h1>Car list</h1>
+  
+    <h1>Car List</h1>
+    <div class="row col-md-12">
+        <!--<div class="col-3">Status</div>-->
+        <div class="col-12">
+            <!--<form class="col-12" th:action="@{/account/car_list}" method="get">-->
+            <form class="col-12" th:action="@{/grunt/list_cars}" method="get">
+                <input th:type="hidden" name="page" th:value="${cars.getNumber()}">
+                <input th:type="hidden" name="size" th:value="${cars.getSize()}">
+                <div>
+                    <input type="checkbox" class="col-3 form-control" name="available"
+                           th:checked="${statuses.contains('AVAILABLE')}"/> AVAILABLE
+                </div>
+                <div sec:authorize="hasAnyRole('GRUNT','ADMIN','MANAGER')">
+                    <input type="checkbox" class="col-3 form-control"
+                           name="booked"
+                           th:checked="${statuses.contains('BOOKED')}"/> BOOKED
+                </div>
+                <div sec:authorize="hasAnyRole('GRUNT','ADMIN','MANAGER')">
+                    <input type="checkbox" class="col-3 form-control"
+                           name="rented"
+                           th:checked="${statuses.contains('RENTED')}"/> RENTED
+                </div>
+                <div sec:authorize="hasAnyRole('GRUNT','ADMIN','MANAGER')">
+                    <input type="checkbox"
+                           class="col-3 form-control"
+                           name="serviced"
+                           th:checked="${statuses.contains('SERVICED')}"/> SERVICED
+                </div>
+                <input type="submit">
+            </form>
+            <!--</a>-->
+        </div>
+        <!--<div class="col-3"  >-->
+        <!--&lt;!&ndash;<a th:href="@{/grunt/remove(carId=${car.getIdCar()})}">&ndash;&gt;-->
+        <!--<button type="button" class="btn btn-danger">-->
+        <!--BOOKED-->
+        <!--</button>-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+        <!--</div>-->
+        <!--<div class="col-3"  >-->
+        <!--&lt;!&ndash;<a th:href="@{/grunt/remove(carId=${car.getIdCar()})}">&ndash;&gt;-->
+        <!--<button type="button" class="btn btn-danger">-->
+        <!--SERVICED-->
+        <!--</button>-->
+        <!--&lt;!&ndash;</a>&ndash;&gt;-->
+        <!--</div>-->
+    </div>
     <div class="row col-md-12">
         <div class="row col-md-12 list-header-row">
-            <div class="col-1">Id</div>
-            <div class="col-2">Name</div>
-            <div class="col-2">RegNr</div>
+            <div class="col-1 font-weight-bold">Id</div>
+            <div class="col-2 font-weight-bold">Name</div>
+            <div class="col-2 font-weight-bold">RegNr</div>
             <!--<div class="col-1">Price</div>-->
             <!--<div class="col-1">Mileage</div>-->
-            <div class="col-2">Status</div>
+            <div class="col-2 font-weight-bold">Status</div>
             <!--<div class="col-1">Bookings</div>-->
-            <div class="col-5"><!--Buttons--></div>
+            <div class="col-5 font-weight-bold"><!--Buttons--></div>
+
         </div>
         <div th:each="car : ${cars}" class="row col-md-12 list-data-row">
             <div class="col-1" th:text="${car.getIdCar()}"></div>
@@ -31,23 +81,24 @@
             <!--<div class="col-1" th:text="${car.getBookings()}"></div>-->
             <div class="row col-5">
                 <!--<div class="col-6">-->
-                    <!--<a th:href="@{'/car/remove/'+${car.getIdCar()}}">-->
-                        <!--<button type="button" class="btn btn-danger">Remove</button>-->
-                    <!--</a>-->
+
+                <!--<a th:href="@{'/car/remove/'+${car.getIdCar()}}">-->
+                <!--<button type="button" class="btn btn-danger">Remove</button>-->
+                <!--</a>-->
                 <!--</div>-->
                 <!--<div class="col-6">-->
-                    <!--<a th:href="@{'/car/edit/'+${car.getIdCar()}}" class="col-md-12">-->
-                        <!--<button type="button" class="btn btn-primary col-md-12">Edit</button>-->
-                    <!--</a>-->
+                <!--<a th:href="@{'/car/edit/'+${car.getIdCar()}}" class="col-md-12">-->
+                <!--<button type="button" class="btn btn-primary col-md-12">Edit</button>-->
+                <!--</a>-->
                 <!--</div>-->
-                <div class="col-4">
+                <div class="col-4" sec:authorize="hasRole('GRUNT')">
                     <a th:href="@{/grunt/remove(carId=${car.getIdCar()})}">
                         <button type="button" class="btn btn-danger">
-                                Remove
+                            Remove
                         </button>
                     </a>
                 </div>
-                <div class="col-4">
+                <div class="col-4" sec:authorize="hasRole('GRUNT')">
                     <a th:href="@{/grunt/edit(carId=${car.getIdCar()})}">
                         <button type="button" class="btn btn-primary">
                             Edit
@@ -61,6 +112,15 @@
                         </button>
                     </a>
                 </div>
+                  
+                <div class="col-4" sec:authorize="hasRole('CLIENT')">
+                    <a th:href="@{/account/booking_add(carId=${car.getIdCar()})}">
+                        <!--<a th:href="@{/account/booking_add}">-->
+                        <button type="button" class="btn btn-primary">
+                            Book
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -69,27 +129,59 @@
                 <ul class="pagination">
                     <li class="page-item" th:if="${cars.getNumber() >0}">
                         <a class="page-link"
+
                            th:href="@{/car/list(page=${cars.getNumber()-1}, size=${cars.getSize()})}">Previous</a>
+
                     </li>
                     <li class="page-item"
                         th:each="number : ${#numbers.sequence(cars.getNumber()-3, cars.getNumber()-1)}"
                         th:if="${number >=0}">
+
                         <a class="page-link" th:href="@{/car/list(page=${number}, size=${cars.getSize()})}"
                            th:text="${number + 1}"></a>
                     </li>
                     <li class="page-item"
                         th:each="number : ${#numbers.sequence(cars.getNumber(), cars.getNumber()+3)}"
                         th:if="${number< cars.getTotalPages()}">
+
                         <a class="page-link" th:href="@{/car/list(page=${number}, size=${cars.getSize()})}"
                            th:text="${number + 1}"></a>
                     </li>
                     <li class="page-item" th:if="${cars.getNumber() < cars.getTotalPages()-1}">
                         <a class="page-link"
+
                            th:href="@{/car/list(page=${cars.getNumber()+1}, size=${cars.getSize()})}">Next</a>
                     </li>
                 </ul>
             </nav>
         </div>
+
+        <!--<div class="row col-md-12 justify-content-center">-->
+        <!--<nav aria-label="Page navigation example">-->
+        <!--<ul class="pagination">-->
+        <!--<li class="page-item" th:if="${cars.getNumber() >0}">-->
+        <!--<a class="page-link"-->
+        <!--th:href="@{/car/list(page=${cars.getNumber()-1}, size=${cars.getSize()})}">Previous</a>-->
+        <!--</li>-->
+        <!--<li class="page-item"-->
+        <!--th:each="number : ${#numbers.sequence(cars.getNumber()-3, cars.getNumber()-1)}"-->
+        <!--th:if="${number >=0}">-->
+        <!--<a class="page-link" th:href="@{/car/list(page=${number}, size=${cars.getSize()})}"-->
+        <!--th:text="${number + 1}"></a>-->
+        <!--</li>-->
+        <!--<li class="page-item"-->
+        <!--th:each="number : ${#numbers.sequence(cars.getNumber(), cars.getNumber()+3)}"-->
+        <!--th:if="${number< cars.getTotalPages()}">-->
+        <!--<a class="page-link" th:href="@{/car/list(page=${number}, size=${cars.getSize()})}"-->
+        <!--th:text="${number + 1}"></a>-->
+        <!--</li>-->
+        <!--<li class="page-item" th:if="${cars.getNumber() < cars.getTotalPages()-1}">-->
+        <!--<a class="page-link"-->
+        <!--th:href="@{/car/list(page=${cars.getNumber()+1}, size=${cars.getSize()})}">Next</a>-->
+        <!--</li>-->
+        <!--</ul>-->
+        <!--</nav>-->
+        <!--</div>-->
 
     </div>
 </div>
