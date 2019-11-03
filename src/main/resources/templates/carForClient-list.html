@@ -24,14 +24,14 @@
             <div class="col-2" th:text="${car.getCarStatus()}"></div>
             <div class="row col-5">
                 <div class="col-4">
-                    <a th:href="@{/account/details(carId=${car.getIdCar()})}">
+                    <a th:href="@{/car/details2(carId=${car.getIdCar()})}">
                         <button type="button" class="btn btn-warning">
                             Details
                         </button>
                     </a>
                 </div>
                 <div class="col-4" <!--sec:authorize="hasRole('CLIENT')-->">
-                    <a th:href="@{/account/booking_add(carId=${car.getIdCar()})}">
+                    <a th:href="@{/booking/booking_add(carId=${car.getIdCar()})}">
                         <button type="button" class="btn btn-primary">
                             Book
                         </button>
