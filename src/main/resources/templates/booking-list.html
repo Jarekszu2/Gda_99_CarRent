@@ -29,7 +29,7 @@
             <div class="row col-3">
                 <div class="col-6">
                     <a th:if="${!booking.isCanceled() and !booking.isAccepted()}"
-                            th:href="@{/account/cancel(idBooking=${booking.getIdBooking()})}">
+                            th:href="@{/booking/cancel(idBooking=${booking.getIdBooking()})}">
                         <button type="button" class="btn btn-danger">
                             Cancel
                         </button>
@@ -38,7 +38,7 @@
 
                 <div class="col-6">
                     <a th:if="${!booking.isCanceled() and !booking.isAccepted()}"
-                       th:href="@{/account/accept(idBooking=${booking.getIdBooking()})}">
+                       th:href="@{/booking/accept(idBooking=${booking.getIdBooking()})}">
                         <button type="button" class="btn btn-warning">
                             Accept
                         </button>

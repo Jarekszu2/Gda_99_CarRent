@@ -26,5 +26,9 @@ public class CarRent {
     @OneToOne
     private Income income;
 
+//    private boolean carRented;
+
+    private boolean carReturned;
+
     private String commentsCarRent;
 }
