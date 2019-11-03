@@ -37,12 +37,6 @@
                 <div class="col-md-6">
                     <label for="cars">Car:</label>
                 </div>
-                <!--<div class="col-md-6">-->
-                    <!--<select id="cars" th:field="*{car}">-->
-                        <!--<option th:each="car : ${cars}" th:text="${car.getName()}" th:value="${car.getName()}"></option>-->
-                    <!--</select>-->
-                <!--</div>-->
-
                 <div class="col-md-6">
                     <select th:name="carId" id="cars" class="form-control col-md-12">
                         <option th:each="car : ${cars}"
@@ -55,10 +49,19 @@
             </div>
 
             <div class="row col-md-12 form-button-row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <button type="reset" class="btn btn-warning offset-3 col-md-6">Reset</button>
                 </div>
-                <div class="col-md-6">
+
+                <!--<div class="col-md-12">-->
+                    <div class="col-md-4">
+                        <a th:href="@{${referer}}">
+                            <button type="button" class="btn btn-primary offset-3 col-md-6">Back</button>
+                        </a>
+                    </div>
+                <!--</div>-->
+
+                <div class="col-md-4">
                     <button type="submit" class="btn btn-primary offset-3 col-md-6">Submit</button>
                 </div>
             </div>

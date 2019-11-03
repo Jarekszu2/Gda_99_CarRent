@@ -8,10 +8,13 @@ import com.javagda25.securitytemplate.repository.GruntRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class GruntService {
@@ -50,7 +53,16 @@ public class GruntService {
         return gruntRepository.findAll(of);
     }
 
+    public Page<Car> getPageCarsByStatus(List<String> status, Pageable pageable) {
+        List<CarStatus> carStatuses = status.stream().map(CarStatus::valueOf).collect(Collectors.toList());
+        return gruntRepository.findAllByCarStatusIn(carStatuses, pageable);
+    }
+
     public Page<Booking> getPageBookings(PageRequest of) {
         return bookingRepository.findAll(of);
+    }
+
+    public List<Car> getCarsAVAILABLE() {
+        return gruntRepository.findAllByCarStatus(CarStatus.AVAILABLE);
     }
 }
