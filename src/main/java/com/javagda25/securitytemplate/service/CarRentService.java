@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -25,5 +26,9 @@ public class CarRentService {
 
     public Page<CarRent> getPageCarRents(PageRequest of) {
         return carRentRepository.findAll(of);
+    }
+
+    public CarRent getCarRentById(Long idCarRent) {
+        return carRentRepository.getOne(idCarRent);
     }
 }

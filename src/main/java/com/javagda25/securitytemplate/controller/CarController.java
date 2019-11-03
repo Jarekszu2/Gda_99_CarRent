@@ -156,7 +156,7 @@ public class CarController {
 
     @GetMapping("/edit")
     public String editCar(Model model, @RequestParam(name = "carId") Long carId) {
-        Optional<Car> carOptional = gruntService.getById(carId);
+        Optional<Car> carOptional = carService.getById(carId);
         CarStatus[] statuses = CarStatus.values();
 
 

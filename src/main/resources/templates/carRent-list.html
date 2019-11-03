@@ -22,17 +22,17 @@
         <div th:each="carRent : ${carRents}" class="row col-md-12 list-data-row">
             <!--<div class="col-1" th:if="${!booking.isAccepted()}" th:text="${booking.getIdBooking()}"></div>-->
             <div class="col-1" th:text="${carRent.getIdCarRent()}"></div>
-            <div class="col-2" th:text="${carRent.getBooking().getClient().getName()}"></div>
             <div class="col-2" th:text="${carRent.getBooking().getClient().getSurname()}"></div>
             <div class="col-2" th:text="${carRent.getBooking().getCar().getName()}"></div>
             <div class="col-2" th:text="${carRent.getBooking().getDateStart()}"></div>
             <div class="col-1" th:text="${carRent.getBooking().getHiresDays()}"></div>
+            <div class="col-2" th:text="${carRent.getBooking().getClient().getName()}"></div>
             <!--<div class="col-2" th:text="${carRent.getHiresDays()}"></div>-->
             <!--<div class="col-2" th:text="${carRent.getCar().getName()}"></div>-->
             <!--<div class="col-1" th:text="${carRent.isCanceled()}"></div>-->
             <div class="row col-2">
                 <div class="col-12">
-                    <a th:href="@{/carRent/add_return(idCarRent=${carRent.getIdCarRent()})}">
+                    <a th:if="${!carRent.isCarReturned()}" th:href="@{/carReturn/add_carReturn(idCarRent=${carRent.getIdCarRent()})}">
                         <button type="button" class="btn btn-danger">
                                 Car Return
                         </button>
