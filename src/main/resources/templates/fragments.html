@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -24,43 +24,88 @@
                 </svg>
             </a>
             <a class="py-2 d-none d-md-inline-block" th:href="@{/}">Home</a>
-            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('GRUNT')" th:href="@{/car/add_car}">Car add</a>
-            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('GRUNT')" th:href="@{/car/list_cars}">Cars list</a>
-            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('GRUNT')" th:href="@{/booking/list_bookings}">Bookings list</a>
+            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('GRUNT')" th:href="@{/car/add_car}">Car
+                add</a>
+            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('GRUNT')" th:href="@{/car/list_cars}">Cars
+                list</a>
+            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('GRUNT')"
+               th:href="@{/booking/list_bookings}">Bookings list</a>
             <!--<a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('GRUNT')" th:href="@{/carRent/add_carRent}">Rent add</a>-->
-            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('GRUNT')" th:href="@{/carRent/list_carRents}">CarRents list</a>
-            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('GRUNT')" th:href="@{/carReturn/list_carReturns}">CarReturns list</a>
+            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('GRUNT')"
+               th:href="@{/carRent/list_carRents}">CarRents list</a>
+            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('GRUNT')"
+               th:href="@{/carReturn/list_carReturns}">CarReturns list</a>
             <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('ADMIN')" th:href="@{/tylkodlakozakow}">Kozaki</a>
-            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('MANAGER')" th:href="@{/admin/account/list}">Account list</a>
-            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')" th:href="@{/user/client}">My account</a>
-            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')" th:href="@{/car/car_list}">Car list</a>
-            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')" th:href="@{/booking/booking_add}">Booking add</a>
-            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')" th:href="@{/booking/bookings}">Bookings cancel/accept</a>
-            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')" th:href="@{/booking/bookings_accepted}">Bookings accepted</a>
+            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('MANAGER')"
+               th:href="@{/admin/account/list}">Account list</a>
+            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')" th:href="@{/user/client}">My
+                account</a>
+            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')" th:href="@{/car/car_list}">Car
+                list</a>
+            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')"
+               th:href="@{/booking/booking_add}">Booking add</a>
+            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')" th:href="@{/booking/bookings}">Bookings
+                cancel/accept</a>
+            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('CLIENT')"
+               th:href="@{/booking/bookings_accepted}">Bookings accepted</a>
             <div class="py-2 d-none d-md-inline-block">
-                <a class="maj-2 d-none d-md-inline-block" sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
-                <a class="maj-2 d-none d-md-inline-block" sec:authorize="!isAuthenticated()" th:href="@{/user/register}">Register</a>
-                <a class="maj-2 d-none d-md-inline-block" sec:authorize="isAuthenticated()" th:href="@{/logout}">Logout</a>
+                <a class="maj-2 d-none d-md-inline-block" sec:authorize="!isAuthenticated()"
+                   th:href="@{/login}">Login</a>
+                <a class="maj-2 d-none d-md-inline-block" sec:authorize="!isAuthenticated()"
+                   th:href="@{/user/register}">Register</a>
+                <a class="maj-2 d-none d-md-inline-block" sec:authorize="isAuthenticated()"
+                   th:href="@{/logout}">Logout</a>
             </div>
         </div>
     </nav>
 </th:block>
 
+<!--<th:block th:fragment="footer">-->
+    <!--<footer class="container py-5">-->
+        <!--<div class="row">-->
+            <!--<div class="col-12 col-md">-->
+                <!--<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"-->
+                     <!--stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img"-->
+                     <!--viewBox="0 0 24 24" focusable="false"><title>Product</title>-->
+                    <!--<circle cx="12" cy="12" r="10"/>-->
+                    <!--<path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/>-->
+                <!--</svg>-->
+                <!--<small class="d-block mb-3 text-muted">&copy; 2017-2019</small>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</footer>-->
+<!--</th:block>-->
+
+
+
 <th:block th:fragment="footer">
     <footer class="container py-5">
         <div class="row">
-            <div class="col-12 col-md">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"
+            <div class="col-4 col-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="yellow" stroke="currentColor"
                      stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img"
-                     viewBox="0 0 24 24" focusable="false"><title>Product</title>
+                     viewBox="0 0 24 24" focusable="false"><title>Sebix-Rent</title>
                     <circle cx="12" cy="12" r="10"/>
                     <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/>
                 </svg>
-                <small class="d-block mb-3 text-muted">&copy; 2017-2019</small>
+            </div>
+            <div class="col-2">
+                <a th:href="@{/contact-form}">Contact Us</a>
+            </div>
+            <div class="col-2">
+                <a th:href="@{/rental-conditions}">Rental Conditions</a>
+            </div>
+            <div class="col-2">
+                <a th:href="@{/about-us}">About Us</a>
+            </div>
+            <div class="col-4">
+                <a>&copy;2019</a>
             </div>
         </div>
     </footer>
+
 </th:block>
+
 
 <th:block th:fragment="scripts">
     <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
