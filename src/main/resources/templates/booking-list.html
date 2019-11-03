@@ -8,16 +8,16 @@
 <body>
 <th:block th:replace="fragments :: navigator" th:remove="tag"/>
 <div class="container">
-    <h1>Booking list</h1>
+    <h1>Booking List</h1>
     <div class="row col-md-12">
         <div class="row col-md-12 list-header-row">
-            <div class="col-1">Booking id</div>
-            <div class="col-2">Booking date/time</div>
-            <div class="col-2">Booking start</div>
-            <div class="col-1">Rental days</div>
-            <div class="col-2">Car</div>
-            <div class="col-1">Canceled</div>
-            <div class="col-2"><!--Buttons--></div>
+            <div class="col-1 font-weight-bold">Booking Id</div>
+            <div class="col-2 font-weight-bold">Booking Date</div>
+            <div class="col-2 font-weight-bold">Booking Start</div>
+            <div class="col-2 font-weight-bold">Rental Days</div>
+            <div class="col-2 font-weight-bold">Car</div>
+            <div class="col-1 font-weight-bold">Canceled</div>
+            <div class="col-2 font-weight-bold"><!--Buttons--></div>
         </div>
         <div th:each="booking : ${bookings}" class="row col-md-12 list-data-row">
             <div class="col-1" th:if="${!booking.isCanceled() and !booking.isAccepted()}" th:text="${booking.getIdBooking()}"></div>

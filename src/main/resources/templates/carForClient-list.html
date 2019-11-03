@@ -11,11 +11,11 @@
     <h1>Cars list - available</h1>
     <div class="row col-md-12">
         <div class="row col-md-12 list-header-row">
-            <div class="col-1">Id</div>
-            <div class="col-2">Name</div>
-            <div class="col-2">Hire/day</div>
-            <div class="col-2">Status</div>
-            <div class="col-5"><!--Buttons--></div>
+            <div class="col-1 font-weight-bold">Id</div>
+            <div class="col-2 font-weight-bold">Name</div>
+            <div class="col-2 font-weight-bold">Hire/day</div>
+            <div class="col-2 font-weight-bold">Status</div>
+            <div class="col-5 font-weight-bold"><!--Buttons--></div>
         </div>
         <div th:each="car : ${cars}" class="row col-md-12 list-data-row">
             <div class="col-1" th:text="${car.getIdCar()}"></div>

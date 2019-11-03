@@ -1,3 +1,7 @@
+body {
+    background-color: #dfec71;
+}
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -26,10 +30,12 @@
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
 }
+
 .site-header a {
     color: #999;
     transition: ease-in-out color .15s;
 }
+
 .site-header a:hover {
     color: #fff;
     text-decoration: none;
@@ -79,6 +85,7 @@
     -ms-flex: 1;
     flex: 1;
 }
+
 @media (min-width: 768px) {
     .flex-md-equal > * {
         -ms-flex: 1;
@@ -86,21 +93,37 @@
     }
 }
 
-.overflow-hidden { overflow: hidden; }
+.overflow-hidden {
+    overflow: hidden;
+}
 
-.form-container{
+.form-container {
     margin: 50px 0 100px 0;
     padding: 0 12px 0 12px;
     box-shadow: 1px 1px 5px 10px #CCCCCC;
     align-items: center;
+
 }
 
-.form-input-row{
+.form-input-row {
     margin: 16px 0 16px 0;
     padding: 0 5px 0 5px;
 }
 
-.form-button-row{
+.form-button-row {
     margin: 16px 0 16px 0;
     padding: 0 5px 0 5px;
+}
+
+div.sticky-left {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    left: 0;
+}
+
+.sebix-logo {
+}
+
+.row-footer {
+    offset-before: 20%;
 }
