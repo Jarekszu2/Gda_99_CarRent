@@ -57,8 +57,8 @@ public class CarService {
         return carRepository.findAllByCarStatusIn(carStatuses, pageable);
     }
 
-    public Page<Booking> getPageBookings(PageRequest of) {
-        return bookingRepository.findAll(of);
+    public Page<Booking> getNotAcceptedPageBookings(PageRequest of) {
+        return bookingRepository.findAllByCarRented( false, of);
     }
 
     public List<Car> getCarsAVAILABLE() {

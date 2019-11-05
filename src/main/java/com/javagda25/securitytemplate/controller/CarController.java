@@ -64,6 +64,10 @@ public class CarController {
         Page<Car> carPage = carService.getPageCarsByStatus(statuses, PageRequest.of(page, size));
         model.addAttribute("cars", carPage);
         model.addAttribute("statuses", statuses);
+        model.addAttribute("available", available);
+        model.addAttribute("booked", booked);
+        model.addAttribute("rented", rented);
+        model.addAttribute("serviced", serviced);
         return "car-list";
     }
 

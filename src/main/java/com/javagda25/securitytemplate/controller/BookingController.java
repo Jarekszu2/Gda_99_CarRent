@@ -39,7 +39,7 @@ public class BookingController {
     public String listBookings(Model model,
                                @RequestParam(name = "page", defaultValue = "0") int page,
                                @RequestParam(name = "size", defaultValue = "2") int size) {
-        Page<Booking> bookingPage = carService.getPageBookings(PageRequest.of(page, size));
+        Page<Booking> bookingPage = carService.getNotAcceptedPageBookings(PageRequest.of(page, size));
         model.addAttribute("bookings", bookingPage);
         return "bookingAll-list";
     }
@@ -160,5 +160,24 @@ public class BookingController {
             model.addAttribute("bookings", account.getBookingsClient());
             return "booking-accepted-list";
         }
+    }
+
+    @GetMapping("/find")
+    public String findBooking(Model model, Long idBooking) {
+
+        model.addAttribute("id", idBooking);
+        return "booking-find";
+    }
+
+    @PostMapping("/find")
+    public String postFindBooking(Model model,
+                                  @RequestParam(name = "id") Long id) {
+        Optional<Booking> optionalBooking = bookingService.getById(id);
+        if (optionalBooking.isPresent()) {
+            Booking booking = optionalBooking.get();
+            model.addAttribute("bookings", booking);
+            return "redirect:/booking/list_bookings";
+        }
+        return "redirect:/booking/bookings";
     }
 }

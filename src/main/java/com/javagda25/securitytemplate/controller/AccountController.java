@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -74,4 +75,30 @@ public class AccountController {
             return "account-client";
         }
     }
+
+//    @PostMapping(path = "/client")
+    @PostMapping("/client")
+    public String postClient() {
+//        accountService.save(client);
+        return "redirect:/user/edit";
+    }
+
+
+    @GetMapping("/edit")
+    public String edit(Model model,
+                       Principal principal) {
+        Account account = accountService.findByUsername(principal.getName());
+        model.addAttribute("account", account);
+        return "account-edit";
+    }
+
+    @PostMapping("/edit")
+    public String postEdit(Principal principal,
+                           Account client,
+                           String newPassword) {
+        accountService.update(principal.getName(), client, newPassword);
+        return "redirect:/car/list_cars";
+    }
+
+
 }

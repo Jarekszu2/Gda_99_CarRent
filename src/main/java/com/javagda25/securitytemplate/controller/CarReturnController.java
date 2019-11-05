@@ -43,7 +43,8 @@ public class CarReturnController {
         int fuelPayment = car.getFeeForFuel();
         String comment = "ok";
         LocalDate dateEnd = carReturnService.getDateEnd(idCarRent);
-        model.addAttribute("carRent", carRent);
+//        model.addAttribute("carRent", carRent);
+        model.addAttribute("idCarRent", carRent.getIdCarRent());
 //        model.addAttribute("delayPayment", delayPayment);
         model.addAttribute("additionalPaymentForFuel", fuelPayment);
         model.addAttribute("cleaningPayment", cleaningPayment);

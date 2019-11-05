@@ -2,16 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Client</title>
+    <title>Client edit</title>
     <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
 </head>
 <body>
 <th:block th:replace="fragments :: navigator" th:remove="tag"/>
 <div class="container">
-    <h1>Client</h1>
-    <form th:action="@{/user/client}" method="post" th:object="${account}">
+    <h1>Client edit</h1>
+    <form th:action="@{/user/edit}" method="post" th:object="${account}">
         <div class="row col-12 form-container">
 
+            <input type="hidden" th:field="*{id}" th:value="*{id}">
+
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="name">Name:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="password" th:name="newPassword">
+                </div>
+            </div>
             <!--<div class="row col-md-12 form-input-row">-->
                 <!--<div class="col-md-6">-->
                     <!--<label for="idCar">Car id:</label>-->
@@ -21,14 +31,14 @@
                 <!--</div>-->
             <!--</div>-->
 
-            <div class="row col-md-12 form-input-row">
-                <div class="col-md-6">
-                    <label for="username">Username:</label>
-                </div>
-                <div class="col-md-6">
-                    <input class="form-control" type="text" id="username" th:name="username" th:value="*{username}">
-                </div>
-            </div>
+            <!--<div class="row col-md-12 form-input-row">-->
+                <!--<div class="col-md-6">-->
+                    <!--<label for="username">Username:</label>-->
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                    <!--<input class="form-control" type="text" id="username" th:name="username" th:value="*{username}">-->
+                <!--</div>-->
+            <!--</div>-->
 
 
             <!--<div class="row col-md-12 form-input-row">-->
@@ -67,20 +77,36 @@
                 </div>
             </div>
 
-            <div class="row col-md-12 form-input-row">
+            <div class="row col-md-12 form-button-row">
                 <div class="col-md-6">
-                    <!--<label for="email">Email:</label>-->
+                    <button type="reset" class="btn btn-warning offset-3 col-md-6">Reset</button>
                 </div>
+
+                <!--<div class="col-md-12">-->
+                <!--<div class="col-md-4">-->
+                <!--<a th:href="@{${referer}}">-->
+                <!--<button type="button" class="btn btn-primary offset-3 col-md-6">Back</button>-->
+                <!--</a>-->
+                <!--</div>-->
+                <!--</div>-->
+
                 <div class="col-md-6">
-                    <!--<a th:href="@{/user/edit(accountId=${account.getId()})}">-->
-                        <button type="submit" class="btn btn-primary">
-                            Edit
-                        </button>
-                    <!--</a>-->
+                    <button type="submit" class="btn btn-primary offset-3 col-md-6">Submit</button>
                 </div>
             </div>
 
-
+            <!--<div class="row col-md-12 form-input-row">-->
+                <!--<div class="col-md-6">-->
+                    <!--&lt;!&ndash;<label for="email">Email:</label>&ndash;&gt;-->
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                    <!--<a th:href="@{/user/edit(accountId=${account.getId()})}">-->
+                        <!--<button type="button" class="btn btn-primary">-->
+                            <!--Edit-->
+                        <!--</button>-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
 
 
         </div>

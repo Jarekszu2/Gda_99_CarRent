@@ -39,14 +39,14 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
         addDefaultRole("CLIENT");
 
 //        addDefaultUser("user", "user", "USER");
-        addDefaultUser("admin", "admin", "admin name", "admin surname", "11", "22", ADMIN, "ADMIN", "GRUNT", "MANAGER", "CLIENT");
-        addDefaultUser("manager", "manager", "manager name", "manager surname", "33", "44", MANAGER,  "GRUNT", "MANAGER");
-        addDefaultUser("grunt", "a", "grunt name", "grunt surname", "55", "66", GRUNT,  "GRUNT");
-        addDefaultUser("client", "a", "client name", "client surname","email", "address", CLIENT, "CLIENT");
+        addDefaultUser("admin", "admin", "admin name", "admin surname", "11", "22", "ADMIN", "GRUNT", "MANAGER", "CLIENT");
+        addDefaultUser("manager", "manager", "manager name", "manager surname", "33", "44", "MANAGER");
+        addDefaultUser("grunt", "a", "grunt name", "grunt surname", "55", "66", "GRUNT");
+        addDefaultUser("client", "a", "client name", "client surname","email", "address", "CLIENT");
 
     }
 
-    private void addDefaultUser(String username, String password, String name, String surname, String email, String address, Position position, String... roles) {
+    private void addDefaultUser(String username, String password, String name, String surname, String email, String address, String... roles) {
         if (!accountRepository.existsByUsername(username)) {
             Account account = new Account();
             account.setPassword(passwordEncoder.encode(password));
@@ -55,7 +55,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
             account.setSurname(surname);
             account.setEmail(email);
             account.setAddress(address);
-            account.setPosition(position);
+//            account.setPosition(position);
 
             Set<AccountRole> userRoles = findRoles(roles);
             account.setAccountRoles(userRoles);

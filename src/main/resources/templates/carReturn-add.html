@@ -9,10 +9,10 @@
 <th:block th:replace="fragments :: navigator" th:remove="tag"/>
 <div class="container">
     <h1>CarReturn add</h1>
-    <form th:action="@{/carReturn/add_carReturn}" method="post" th:object="${carRent}">
+    <form th:action="@{/carReturn/add_carReturn}" method="post">
         <div class="row col-12 form-container">
 
-            <input type="hidden" th:field="*{idCarRent}" th:value="*{idCarRent}">
+            <input type="hidden" th:name="idCarRent" th:value="${idCarRent}">
             <!--<input type="hidden" th:field="${idCar}" th:value="${idCar}">-->
             <!--<input type="hidden" th:field="${idClient}" th:value="${idClient}">-->
 
@@ -21,7 +21,7 @@
                     <label for="dateEnd">Date end:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="date" id="dateEnd" th:name="${dateEnd}" th:value="${dateEnd}">
+                    <input class="form-control" type="date" id="dateEnd" th:name="dateEnd" th:value="${dateEnd}">
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
                     <label for="dateOfReturn">Date of return:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="date" id="dateOfReturn" th:name="${dateOfReturn}" th:value="${dateOfReturn}">
+                    <input class="form-control" type="date" id="dateOfReturn" th:name="dateOfReturn" th:value="${dateOfReturn}">
                 </div>
             </div>
 
@@ -48,7 +48,7 @@
                     <label for="additionalPaymentForFuel">Payment for fuel:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="number" id="additionalPaymentForFuel" th:name="${additionalPaymentForFuel}" th:value="${additionalPaymentForFuel}">
+                    <input class="form-control" type="number" id="additionalPaymentForFuel" th:name="additionalPaymentForFuel" th:value="${additionalPaymentForFuel}">
                 </div>
             </div>
 
@@ -57,7 +57,7 @@
                     <label for="cleaningPayment">Payment for cleaning:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="number" id="cleaningPayment" th:name="${cleaningPayment}" th:value="${cleaningPayment}">
+                    <input class="form-control" type="number" id="cleaningPayment" th:name="additionalPaymentForCleaning" th:value="${cleaningPayment}">
                 </div>
             </div>
 
@@ -66,7 +66,7 @@
                     <label for="commentCarReturn">Comment:</label>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control" type="text" id="commentCarReturn" th:name="${commentCarReturn}" th:value="${commentCarReturn}">
+                    <input class="form-control" type="text" id="commentCarReturn" th:name="commentCarReturn" th:value="${commentCarReturn}">
                 </div>
             </div>
 
