@@ -14,7 +14,7 @@
         <!--<div class="col-3">Status</div>-->
         <div class="col-12">
             <!--<form class="col-12" th:action="@{/account/car_list}" method="get">-->
-            <form class="col-12" th:action="@{/car/list_cars}" method="get">
+            <form class="col-12 form-inline" th:action="@{/car/list_cars}" method="get">
                 <input th:type="hidden" name="page" th:value="${cars.getNumber()}">
                 <input th:type="hidden" name="size" th:value="${cars.getSize()}">
                 <div>
@@ -56,6 +56,9 @@
         <!--&lt;!&ndash;</a>&ndash;&gt;-->
         <!--</div>-->
     </div>
+
+    <div> <p></p></div>
+    <div> <p></p></div>
     <div class="row col-md-12">
         <div class="row col-md-12 list-header-row">
             <div class="col-1 font-weight-bold">Id</div>
