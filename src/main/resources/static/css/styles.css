@@ -32,12 +32,12 @@ body {
 }
 
 .site-header a {
-    color: #999;
+    color: #dfec71;
     transition: ease-in-out color .15s;
 }
 
 .site-header a:hover {
-    color: #fff;
+    color: #dfec71;
     text-decoration: none;
 }
 
@@ -126,4 +126,132 @@ div.sticky-left {
 
 .row-footer {
     offset-before: 20%;
+
+}
+
+
+.sebix-green { color: #dfec71;
+}
+
+.antiquewhite {
+    color: antiquewhite;
+}
+
+a:link {
+    color: #dfec71;
+}
+
+li:link{
+    color: #dfec71;
+}
+
+div:link{
+    color: #dfec71;
+}
+
+/* unvisited link */
+a:link {
+    color: #dfec71;
+}
+
+/* visited link */
+a:visited {
+    color: #dfec71;
+}
+
+/* mouse over link */
+a:hover {
+    color: #dfec71;
+}
+
+/* selected link */
+a:active {
+    color: #dfec71;
+}
+
+li:link {
+    color: #dfec71;
+}
+
+/* visited link */
+li:visited {
+    color: #dfec71;
+}
+
+/* mouse over link */
+li:hover {
+    color: #dfec71;
+}
+
+/* selected link */
+li:active {
+    color: #dfec71;
+}
+
+div:link {
+    color: #dfec71;
+}
+
+/* visited link */
+div:visited {
+    color: #dfec71;
+}
+
+/* mouse over link */
+div:hover {
+    color: rgba(14, 60, 136, 1);
+}
+
+/* selected link */
+div:active {
+    color: #dfec71;
+}
+
+.dropdown-item {
+    background: black;
+    color: #dfec71;
+}
+
+.nav-link {
+ color: #dfec71;
+}
+
+.nav-item {
+    color: #3c3a37;
+}
+
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active >
+.nav-link, .navbar-dark .navbar-nav .nav-link.show,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #dfec71;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #dfec71;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    width: 60%;
+}
+
+.blink_me {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+.logout-black {
+    color: #3c3a37;
+}
+
+
+.logout-black:hover{
+    color: #3c3a37;
 }
