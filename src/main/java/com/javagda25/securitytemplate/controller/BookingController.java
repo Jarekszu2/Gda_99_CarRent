@@ -6,7 +6,7 @@ import com.javagda25.securitytemplate.model.Car;
 import com.javagda25.securitytemplate.model.CarStatus;
 import com.javagda25.securitytemplate.service.AccountService;
 import com.javagda25.securitytemplate.service.BookingService;
-import com.javagda25.securitytemplate.service.GruntService;
+import com.javagda25.securitytemplate.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,7 +23,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping(path = "/account/")
+@RequestMapping(path = "/booking/")
 public class BookingController {
 
     @Autowired
@@ -33,78 +33,15 @@ public class BookingController {
     private BookingService bookingService;
 
     @Autowired
-    private GruntService gruntService;
+    private CarService carService;
 
-    @GetMapping("/client")
-    public String client(Model model,
-                         Principal principal) {
-        if (principal == null) {
-            // nie jest zalogowany
-            return "login-form";
-        } else {
-            Account account = accountService.findByUsername(principal.getName());
-            model.addAttribute("account", account);
-            return "booking-account";
-        }
-    }
-
-    @GetMapping("/car_list")
-    public String carsForClient(Model model,
-                                Principal principal) {
-
-        List<Car> cars = gruntService.getCarsAVAILABLE();
-        model.addAttribute("cars", cars);
-
-        Account account = accountService.findByUsername(principal.getName());
-        Long idClient = account.getId();
-        List<Booking> bookingList = bookingService.listBookingsOfClient(idClient);
-        Set<Car> carSetBooked = bookingList.stream()
-                .map(booking -> booking.getCar())
-                .filter(car -> car.getCarStatus().equals(CarStatus.BOOKED))
-                .collect(Collectors.toSet());
-        model.addAttribute("carsBooked", carSetBooked);
-
-//        Account account = accountService.findByUsername(principal.getName());
-//        Long idClient = account.getId();
-//        List<Booking> bookingList = bookingService.listBookingsOfClient(idClient);
-        Set<Car> carSetRented = bookingList.stream()
-                .map(booking -> booking.getCar())
-                .filter(car -> car.getCarStatus().equals(CarStatus.RENTED))
-                .collect(Collectors.toSet());
-        model.addAttribute("carsRented", carSetRented);
-
-        return "carForClient-list";
-    }
-//    public String carAvailableList(Model model,
-//                                   @RequestParam(name = "page", defaultValue = "0") int page,
-//                                   @RequestParam(name = "size", defaultValue = "5") int size,
-//                                   @RequestParam(name = "available", defaultValue = "false") boolean available,
-//                                   @RequestParam(name = "booked", defaultValue = "false") boolean booked,
-//                                   @RequestParam(name = "serviced", defaultValue = "false") boolean serviced) {
-//        boolean allfalse = !available && !booked && !serviced;
-//        List<String> statuses = new ArrayList<>();
-//        if (available || allfalse) statuses.add("AVAILABLE");
-//        if (booked) statuses.add("BOOKED");
-//        if (serviced) statuses.add("SERVICED");
-//
-//        Page<Car> carPage = gruntService.getPageCarsByStatus(statuses, PageRequest.of(page, size));
-//        model.addAttribute("cars", carPage);
-//        model.addAttribute("statuses", statuses);
-//        return "car-list";
-
-    @GetMapping("/details")
-    public String details(Model model,
-                          HttpServletRequest request,
-                          @RequestParam(name = "carId") Long carId) {
-        Optional<Car> optionalCar = gruntService.getById(carId);
-        if (optionalCar.isPresent()) {
-            Car car = optionalCar.get();
-
-            model.addAttribute("car", car);
-            model.addAttribute("referer", request.getHeader("referer"));
-            return "carForClient-details";
-        }
-        return "redirect:/account/car_list";
+    @GetMapping("/list_bookings")
+    public String listBookings(Model model,
+                               @RequestParam(name = "page", defaultValue = "0") int page,
+                               @RequestParam(name = "size", defaultValue = "2") int size) {
+        Page<Booking> bookingPage = carService.getNotAcceptedPageBookings(PageRequest.of(page, size));
+        model.addAttribute("bookings", bookingPage);
+        return "bookingAll-list";
     }
 
     @GetMapping("/bookings")
@@ -132,10 +69,10 @@ public class BookingController {
             booking.setClient(account);
 
             if (carId != null) {
-                Car car = gruntService.getCarById(carId);
+                Car car = carService.getCarById(carId);
                 model.addAttribute("cars", car);
             } else {
-                List<Car> carsAvailable = gruntService.getCarsByStatus(CarStatus.AVAILABLE);
+                List<Car> carsAvailable = carService.getCarsByStatus(CarStatus.AVAILABLE);
                 model.addAttribute("cars", carsAvailable);
             }
 
@@ -147,7 +84,7 @@ public class BookingController {
 
     @PostMapping("/booking_add")
     public String addBook(Model model, Booking booking, Principal principal, Long carId) {
-        Car car = gruntService.getCarById(carId);
+        Car car = carService.getCarById(carId);
         car.setCarStatus(CarStatus.BOOKED);
         Account account = accountService.findByUsername(principal.getName());
         booking.setClient(account);
@@ -159,7 +96,7 @@ public class BookingController {
         accountService.save(account);
 
         model.addAttribute("unconfirmed", booking);
-        return "redirect:/account/bookings";
+        return "redirect:/booking/bookings";
     }
 
     @GetMapping("/cancel")
@@ -182,7 +119,7 @@ public class BookingController {
         car.setCarStatus(CarStatus.AVAILABLE);
         booking.setCar(car);
         bookingService.save(booking);
-        return "redirect:/account/bookings";
+        return "redirect:/booking/bookings";
     }
 
     @GetMapping("/accept")
@@ -206,11 +143,11 @@ public class BookingController {
     public String postAccept(Long idBooking) {
         Booking booking = bookingService.getBookingById(idBooking);
         Car car = booking.getCar();
-        car.setCarStatus(CarStatus.RENTED);
+        car.setCarStatus(CarStatus.BOOKED);
         booking.setCar(car);
         booking.setAccepted(true);
         bookingService.save(booking);
-        return "redirect:/account/bookings_accepted";
+        return "redirect:/booking/bookings_accepted";
     }
 
     @GetMapping("/bookings_accepted")
@@ -223,5 +160,25 @@ public class BookingController {
             model.addAttribute("bookings", account.getBookingsClient());
             return "booking-accepted-list";
         }
+    }
+
+    @GetMapping("/find")
+//    public String findBooking(Model model, Long idBooking) {
+    public String findBooking() {
+
+//        model.addAttribute("id", idBooking);
+        return "booking-find";
+    }
+
+    @PostMapping("/find")
+    public String postFindBooking(Model model,
+                                  @RequestParam(name = "id") Long id) {
+        Optional<Booking> optionalBooking = bookingService.getById(id);
+        if (optionalBooking.isPresent()) {
+            Booking booking = optionalBooking.get();
+            model.addAttribute("bookings", booking);
+            return "redirect:/booking/list_bookings";
+        }
+        return "redirect:/booking/bookings";
     }
 }

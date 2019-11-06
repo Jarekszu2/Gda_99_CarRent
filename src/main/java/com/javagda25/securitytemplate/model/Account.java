@@ -46,9 +46,9 @@ public class Account {
     private String address;
 //    można dodać tel do kontaktu i NIP do faktury
 
-    @NotNull
-    @Enumerated(value = EnumType.STRING)
-    private Position position = Position.CLIENT;
+//    @NotNull
+//    @Enumerated(value = EnumType.STRING)
+//    private Position position = Position.CLIENT;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude

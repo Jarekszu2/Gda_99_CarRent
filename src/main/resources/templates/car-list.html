@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
@@ -10,13 +9,12 @@
 <body>
 <th:block th:replace="fragments :: navigator" th:remove="tag"/>
 <div class="container">
-  
     <h1>Car List</h1>
     <div class="row col-md-12">
         <!--<div class="col-3">Status</div>-->
         <div class="col-12">
             <!--<form class="col-12" th:action="@{/account/car_list}" method="get">-->
-            <form class="col-12" th:action="@{/grunt/list_cars}" method="get">
+            <form class="col-12" th:action="@{/car/list_cars}" method="get">
                 <input th:type="hidden" name="page" th:value="${cars.getNumber()}">
                 <input th:type="hidden" name="size" th:value="${cars.getSize()}">
                 <div>
@@ -68,7 +66,6 @@
             <div class="col-2 font-weight-bold">Status</div>
             <!--<div class="col-1">Bookings</div>-->
             <div class="col-5 font-weight-bold"><!--Buttons--></div>
-
         </div>
         <div th:each="car : ${cars}" class="row col-md-12 list-data-row">
             <div class="col-1" th:text="${car.getIdCar()}"></div>
@@ -81,7 +78,6 @@
             <!--<div class="col-1" th:text="${car.getBookings()}"></div>-->
             <div class="row col-5">
                 <!--<div class="col-6">-->
-
                 <!--<a th:href="@{'/car/remove/'+${car.getIdCar()}}">-->
                 <!--<button type="button" class="btn btn-danger">Remove</button>-->
                 <!--</a>-->
@@ -92,29 +88,28 @@
                 <!--</a>-->
                 <!--</div>-->
                 <div class="col-4" sec:authorize="hasRole('GRUNT')">
-                    <a th:href="@{/grunt/remove(carId=${car.getIdCar()})}">
+                    <a th:href="@{/car/remove(carId=${car.getIdCar()})}">
                         <button type="button" class="btn btn-danger">
                             Remove
                         </button>
                     </a>
                 </div>
                 <div class="col-4" sec:authorize="hasRole('GRUNT')">
-                    <a th:href="@{/grunt/edit(carId=${car.getIdCar()})}">
+                    <a th:href="@{/car/edit(carId=${car.getIdCar()})}">
                         <button type="button" class="btn btn-primary">
                             Edit
                         </button>
                     </a>
                 </div>
                 <div class="col-4">
-                    <a th:href="@{/grunt/details(carId=${car.getIdCar()})}">
+                    <a th:href="@{/car/details(carId=${car.getIdCar()})}">
                         <button type="button" class="btn btn-primary">
                             Details
                         </button>
                     </a>
                 </div>
-                  
                 <div class="col-4" sec:authorize="hasRole('CLIENT')">
-                    <a th:href="@{/account/booking_add(carId=${car.getIdCar()})}">
+                    <a th:href="@{/booking/booking_add(carId=${car.getIdCar()})}">
                         <!--<a th:href="@{/account/booking_add}">-->
                         <button type="button" class="btn btn-primary">
                             Book
@@ -122,35 +117,30 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div>available
 
         <div class="row col-md-12 justify-content-center">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item" th:if="${cars.getNumber() >0}">
                         <a class="page-link"
-
-                           th:href="@{/car/list(page=${cars.getNumber()-1}, size=${cars.getSize()})}">Previous</a>
-
+                           th:href="@{/car/list_cars(page=${cars.getNumber()-1}, size=${cars.getSize()}, available=${available}, booked=${booked}, rented=${rented}, serviced=${serviced})}">Previous</a>
                     </li>
                     <li class="page-item"
                         th:each="number : ${#numbers.sequence(cars.getNumber()-3, cars.getNumber()-1)}"
                         th:if="${number >=0}">
-
-                        <a class="page-link" th:href="@{/car/list(page=${number}, size=${cars.getSize()})}"
+                        <a class="page-link" th:href="@{/car/list_cars(page=${number}, size=${cars.getSize()})}"
                            th:text="${number + 1}"></a>
                     </li>
                     <li class="page-item"
                         th:each="number : ${#numbers.sequence(cars.getNumber(), cars.getNumber()+3)}"
                         th:if="${number< cars.getTotalPages()}">
-
-                        <a class="page-link" th:href="@{/car/list(page=${number}, size=${cars.getSize()})}"
+                        <a class="page-link" th:href="@{/car/list_cars(page=${number}, size=${cars.getSize()})}"
                            th:text="${number + 1}"></a>
                     </li>
                     <li class="page-item" th:if="${cars.getNumber() < cars.getTotalPages()-1}">
                         <a class="page-link"
-
-                           th:href="@{/car/list(page=${cars.getNumber()+1}, size=${cars.getSize()})}">Next</a>
+                           th:href="@{/car/list_cars(page=${cars.getNumber()+1}, size=${cars.getSize()})}">Next</a>
                     </li>
                 </ul>
             </nav>
