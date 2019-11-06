@@ -12,14 +12,14 @@
     <h1>CarRents list</h1>
     <div class="row col-md-12">
         <div class="row col-md-12 list-header-row">
-            <div class="col-1">RentCar id</div>
-            <div class="col-1">Client name</div>
-            <div class="col-2">Client surname</div>
-            <div class="col-2">Car</div>
-            <div class="col-2">Date start</div>
-            <div class="col-1">Hire days</div>
-            <div class="col-1" sec:authorize="hasRole('MANAGER')">Income</div>
-            <div class="col-2"><!--Buttons--></div>
+            <div class="col-1 font-weight-bold">RentCar id</div>
+            <div class="col-1 font-weight-bold">Client name</div>
+            <div class="col-2 font-weight-bold">Client surname</div>
+            <div class="col-2 font-weight-bold">Car</div>
+            <div class="col-2 font-weight-bold">Date start</div>
+            <div class="col-1 font-weight-bold">Hire days</div>
+            <div class="col-1 font-weight-bold" sec:authorize="hasRole('MANAGER')">Income</div>
+            <div class="col-2 font-weight-bold"><!--Buttons--></div>
         </div>
         <div th:each="carRent : ${carRents}" class="row col-md-12 list-data-row">
             <!--<div class="col-1" th:if="${!booking.isAccepted()}" th:text="${booking.getIdBooking()}"></div>-->

@@ -81,7 +81,6 @@
 <!--=====================================================================================================================-->
 <th:block th:fragment="navigator">
 
-
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <a class="navbar-brand" th:class="sebix-green" th:href="@{/}">Sebix-Rent</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
@@ -128,16 +127,16 @@
             <!--<a class="nav-link" th:href="@{/}">Home</a>-->
             <!--</li>-->
         </ul>
-        <li class="nav-item active align-items-end blink_me" sec:authorize="hasRole('ADMIN')">
+        <li class="nav-item active align-items-end blink_me sebix-green" sec:authorize="hasRole('ADMIN')">
             <a class="nav-link align-items-start" th:class="sebix-green" sec:authorize="hasRole('ADMIN')" th:href="@{/tylkodlakozakow}">Kozaki</a>
             <!--<a sec:authorize="hasRole('ADMIN')" th:href="@{/tylkodlakozakow}">Kozaki</a>-->
             <!--<a class="navbar-brand" th:class="sebix-green" th:href="@{/}">Sebix-Rent</a>-->
         </li>
-        <li class="nav-item active align-items-start">
-            <a class="py-2 d-none d-md-inline-block" sec:authorize="hasRole('MANAGER') or hasRole('ADMIN')" th:href="@{/admin/account/list}">Account list</a>
+        <li class="nav-item active align-items-start sebix-green">
+            <a class="py-2 d-none d-md-inline-block sebix-green" sec:authorize="hasRole('MANAGER') or hasRole('ADMIN')" th:href="@{/admin/account/list}">Account list</a>
         </li>
         <li>
-            <div class="col-9 py-2 d-none d-md-inline-block justify-content-end">
+            <div class="col-9 py-2 d-none d-md-inline-block justify-content-end sebix-green">
                 <a class="maj-2 antiquewhite d-none d-md-inline-block justify-content-end logout-black" sec:authorize="!isAuthenticated()" th:href="@{/login}">Login</a>
                 <a class="maj-2 antiquewhite d-none d-md-inline-block justify-content-end logout-black" sec:authorize="!isAuthenticated()"> | </a>
                 <a class="maj-2 antiquewhite d-none d-md-inline-block justify-content-end logout-black" sec:authorize="!isAuthenticated()" th:href="@{/user/register}">Register</a>
@@ -188,96 +187,71 @@
 
 <!--=====================================================================================================================-->
 <th:block th:fragment="footer">
-    <footer class="container py-5">
-        <div class="row">
-            <div class="col-12 col-md">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="yellow" stroke="currentColor"
-                     stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img"
-                     viewBox="0 0 24 24" focusable="false"><title>Product</title>
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/>
-                </svg>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                <small class="d-block mb-3 text-muted">&copy; 2017-2019</small>
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-                <div class="container">
+    <!--<footer class="container py-5">-->
+    <div class="container footer-center">
+                <!--<small class="d-block mb-3 text-muted">&copy; 2017-2019</small>-->
                     <!--<small class="d-block mb-3 text-muted">&copy;2019</small>-->
                     <!--<a class="d-block mb-3 text-muted" th:href="@{/faq}">FAQ</a>-->
-                    <div class="col-1">
-                    <small class="py-2 d-none d-md-inline-block">&copy;2019</small>
-                    </div>
-                    <div class="col-4">
-                    <a class="py-2 d-none d-md-inline-block" th:href="@{/contact-form}">Contact Us</a>
-                    </div>
-                    <div class="col-5">
-                    <a class="py-2 d-none d-md-inline-block" th:href="@{/rental-conditions}">Rental Conditions</a>
-                    </div>
-                    <div class="col-2">
-                    <a class="py-2 d-none d-md-inline-block" th:href="@{/faq}">FAQ</a>
-                    </div>
-                </div>
+        <a class="col-2">
+            <a class="py-2 d-none d-md-inline-block ">&copy;2019</a>
+        </a>
+        <a class="col-4">
+            <a class="py-2 d-none d-md-inline-block footer-color" th:href="@{/contact-form}">Contact Us</a>
+        </a>
+        <a class="col-4">
+            <a class="py-2 d-none d-md-inline-block footer-color" th:href="@{/rental-conditions}">Rental Conditions</a>
+        </a>
+        <a class="col-2">
+            <a class="py-2 d-none d-md-inline-block footer-color" th:href="@{/faq}">FAQ</a>
+        </a>
+    </div>
+    <div class="container-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="yellow" stroke="currentColor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mb-2" role="img"
+         viewBox="0 0 24 24" focusable="false"><title>Sebix-Rent Represent</title>
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"/>
+    </svg>
+    </div>
 
-                <div class="container">
-                    <!--<small class="d-block mb-3 text-muted">&copy;2019</small>-->
-                    <!--<a class="d-block mb-3 text-muted" th:href="@{/faq}">FAQ</a>-->
-                    <div class="col-1">
-                        <!--<small class="py-2 d-none d-md-inline-block">&copy;2019</small>--> small
-                    </div>
-                    <div class="col-4">
-                        <!--<p th:href="@{/contact-form}">Contact Us</p>--> contact
-                    </div>
-                    <div class="col-5">
-                        <!--<p th:href="@{/rental-conditions}">Rental Conditions</p>--> rental
-                    </div>
-                    <div class="col-2">
-                        <!--<p th:href="@{/faq}">FAQ</p>--> faq
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        1 of 3
-                    </div>
-                    <div class="col-6">
-                        2 of 3 (wider)
-                    </div>
-                    <div class="col">
-                        3 of 3
-                    </div>
-                </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
+    <!--</div>-->
 
-                <small class="d-block mb-3 text-muted">&copy;2019</small>
+            <!--<div class="container">-->
+            <!--&lt;!&ndash;<small class="d-block mb-3 text-muted">&copy;2019</small>&ndash;&gt;-->
+            <!--&lt;!&ndash;<a class="d-block mb-3 text-muted" th:href="@{/faq}">FAQ</a>&ndash;&gt;-->
+            <!--<div class="col-1">-->
+            <!--&lt;!&ndash;<small class="py-2 d-none d-md-inline-block">&copy;2019</small>&ndash;&gt; small-->
+            <!--</div>-->
+            <!--<div class="col-4">-->
+            <!--&lt;!&ndash;<p th:href="@{/contact-form}">Contact Us</p>&ndash;&gt; contact-->
+            <!--</div>-->
+            <!--<div class="col-5">-->
+            <!--&lt;!&ndash;<p th:href="@{/rental-conditions}">Rental Conditions</p>&ndash;&gt; rental-->
+            <!--</div>-->
+            <!--<div class="col-2">-->
+            <!--&lt;!&ndash;<p th:href="@{/faq}">FAQ</p>&ndash;&gt; faq-->
+            <!--</div>-->
+            <!--</div>-->
 
-                <p>&copy; 2017-2019 Company, Inc. &middot; <a href="">Privacy</a> &middot; <a href="#">Terms</a></p>
->>>>>>> Stashed changes
-=======
-                <small class="d-block mb-3 text-muted">&copy; 2019</small>
->>>>>>> Stashed changes
-=======
-                <small class="d-block mb-3 text-muted">&copy;2019</small>
->>>>>>> Stashed changes
-            </div>
-        </div>
+            <!--<div class="container">-->
+            <!--<div class="row">-->
+            <!--<div class="col">-->
+            <!--1 of 3-->
+            <!--</div>-->
+            <!--<div class="col-6">-->
+            <!--2 of 3 (wider)-->
+            <!--</div>-->
+            <!--<div class="col">-->
+            <!--3 of 3-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<small class="d-block mb-3 text-muted">&copy;2019</small>-->
 
-    </footer>
+            <!--<p>&copy; 2017-2019 Company, Inc. &middot; <a href="">Privacy</a> &middot; <a href="#">Terms</a></p>-->
+            <!--<small class="d-block mb-3 text-muted">&copy; 2019</small>-->
+            <!--</div>-->
+
+    <!--</footer>-->
 </th:block>
 
 <th:block th:fragment="scripts">

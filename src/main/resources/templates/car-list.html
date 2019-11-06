@@ -68,12 +68,12 @@
             <div class="col-5 font-weight-bold"><!--Buttons--></div>
         </div>
         <div th:each="car : ${cars}" class="row col-md-12 list-data-row">
-            <div class="col-1" th:text="${car.getIdCar()}"></div>
-            <div class="col-2" th:text="${car.getName()}"></div>
-            <div class="col-2" th:text="${car.getRegNr()}"></div>
+            <div class="col-1 font-weight-bold" th:text="${car.getIdCar()}"></div>
+            <div class="col-2 font-weight-bold" th:text="${car.getName()}"></div>
+            <div class="col-2 font-weight-bold" th:text="${car.getRegNr()}"></div>
             <!--<div class="col-1" th:text="${car.getPrice()}"></div>-->
             <!--<div class="col-1" th:text="${car.getMileage()}"></div>-->
-            <div class="col-2" th:text="${car.getCarStatus()}"></div>
+            <div class="col-2 font-weight-bold" th:text="${car.getCarStatus()}"></div>
             <!--<div class="col-1">&lt;!&ndash;Odstęp&ndash;&gt;</div>-->
             <!--<div class="col-1" th:text="${car.getBookings()}"></div>-->
             <div class="row col-5">
@@ -117,7 +117,8 @@
                     </a>
                 </div>
             </div>
-        </div>available
+        </div>
+        <!--available-->
 
         <div class="row col-md-12 justify-content-center">
             <nav aria-label="Page navigation example">
