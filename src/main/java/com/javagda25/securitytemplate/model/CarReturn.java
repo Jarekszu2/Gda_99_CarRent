@@ -5,8 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Formula;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -19,17 +22,18 @@ public class CarReturn {
     private Long idCarReturn;
 
     @CreationTimestamp
-    private LocalDateTime dateOfReturn;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate dateOfReturn;
 
     @OneToOne
     private CarRent carRent;
 
 //    @Formula(value = )
-    private double additionalPaymentForDelay;
+    private int additionalPaymentForDelay;
 
-    private double additionalPaymentForCleaning;
+    private int additionalPaymentForCleaning;
 
-    private double additionalPaymentForFuel;
+    private int additionalPaymentForFuel;
 
-    private String commentsCarReturn;
+    private String commentCarReturn;
 }

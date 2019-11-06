@@ -49,6 +49,9 @@ public class Booking {
 
     private boolean accepted = false;
 
+    private boolean carRented = false;
+
+
 //    @Formula(value = "select timestampdiff(DAY, booking.date_end, booking.date_start) * car.getPrice()")
 //    private double amount;
 }

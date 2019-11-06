@@ -3,8 +3,6 @@ package com.javagda25.securitytemplate.controller;
 import com.javagda25.securitytemplate.model.Account;
 import com.javagda25.securitytemplate.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -12,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -41,7 +40,7 @@ public class AccountController {
                            String passwordConfirm,
                            Model model) {
 
-        if (result.hasErrors()) {
+        if(result.hasErrors()){
             return registrationError(model, account, result.getFieldError().getDefaultMessage());
         }
 
@@ -50,7 +49,7 @@ public class AccountController {
             return registrationError(model, account, "Passwords do not match.");
         }
 
-        if (!accountService.register(account)) {
+        if(!accountService.register(account)){
             return registrationError(model, account, "User with given username already exists.");
         }
 
@@ -64,8 +63,42 @@ public class AccountController {
         return "registration-form";
     }
 
-    private String showRegisteredName(Principal principal) {
-        return principal.getName();
+    @GetMapping("/client")
+    public String client(Model model,
+                         Principal principal) {
+        if (principal == null) {
+            // nie jest zalogowany
+            return "login-form";
+        } else {
+            Account account = accountService.findByUsername(principal.getName());
+            model.addAttribute("account", account);
+            return "account-client";
+        }
     }
+
+//    @PostMapping(path = "/client")
+    @PostMapping("/client")
+    public String postClient() {
+//        accountService.save(client);
+        return "redirect:/user/edit";
+    }
+
+
+    @GetMapping("/edit")
+    public String edit(Model model,
+                       Principal principal) {
+        Account account = accountService.findByUsername(principal.getName());
+        model.addAttribute("account", account);
+        return "account-edit";
+    }
+
+    @PostMapping("/edit")
+    public String postEdit(Principal principal,
+                           Account client,
+                           String newPassword) {
+        accountService.update(principal.getName(), client, newPassword);
+        return "redirect:/car/list_cars";
+    }
+
 
 }

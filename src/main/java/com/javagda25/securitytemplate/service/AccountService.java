@@ -120,4 +120,24 @@ public class AccountService {
     public void save(Account account) {
         accountRepository.save(account);
     }
+
+    public Account getClientById(Long accountId) {
+        return accountRepository.getOne(accountId);
+    }
+
+    public void update(String username, Account client, String newPassword) {
+        Optional<Account> accountOptional = accountRepository.findByUsername(username);
+        if (accountOptional.isPresent()) {
+            Account account = accountOptional.get();
+
+            account.setName(client.getName());
+            account.setSurname(client.getSurname());
+            account.setEmail(client.getEmail());
+            if (newPassword != null && !newPassword.trim().isEmpty()) {
+                account.setPassword(passwordEncoder.encode(newPassword));
+            }
+
+            accountRepository.save(account);
+        }
+    }
 }

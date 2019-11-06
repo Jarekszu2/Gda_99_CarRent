@@ -3,6 +3,7 @@ package com.javagda25.securitytemplate.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -23,8 +24,10 @@ public class CarRent {
     @OneToOne
     private CarReturn carReturn;
 
-    @OneToOne
-    private Income income;
+    @Formula(value = "1000")
+    private int income;
+
+    private boolean carReturned;
 
     private String commentsCarRent;
 }

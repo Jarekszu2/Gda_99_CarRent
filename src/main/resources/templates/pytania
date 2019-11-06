@@ -1,9 +1,2 @@
-1 logowanie client: Bookings/Cancellation/Cancel wywala się (booking-cancellation.html - czy może być th:field zamiast th:value - car się wywala)
-2 jak z jednego formularz przejść do drugiego - mam addBooking, dodaję daty i samochód -
-  chcę przejść do formularza accept zaprezentować wartoś wynajmu i yes or no
-3 co to jest th:text
-4 logowanie client: listowanie car/AVAILABLE jak zrobić paginację dla AVAILABLE
-5 zmiana hasła klienta
-6 BookingController - jak i co wyrzucić do servisu
-7 if na html - login grunt: Bookings list - button rental powinien być tylko dla cancelled(false)
-8 http://localhost:8080/account/details?carId=1 - client przy dodawaniu samochodu może zmieniać jego "dane"
+1 zmiana hasła klienta
+2 czemu bookingi widziane przez grunta mają inne id?
