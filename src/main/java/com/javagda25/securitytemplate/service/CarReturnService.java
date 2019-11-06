@@ -23,16 +23,20 @@ public class CarReturnService {
     @Autowired
     private CarRentService carRentService;
 
-//    public int getDelayPayment(Long idCarRent) {
-//        CarRent carRent = carRentService.getCarRentById(idCarRent);
-//        Booking booking = carRent.getBooking();
-//        LocalDate dateStart = booking.getBookingDate();
-//        Duration duration = Duration.between(LocalDate.now(), dateStart);
-//        int days = (int) duration.toDays() - booking.getHiresDays();
-//        Car car = booking.getCar();
-//        int feeForDelay = car.getPrice() * 2;
-//        return days * feeForDelay;
-//    }
+    public int getDelayPayment(Long idCarRent) {
+        CarRent carRent = carRentService.getCarRentById(idCarRent);
+        Booking booking = carRent.getBooking();
+        LocalDate dateStart = booking.getBookingDate();
+        Duration duration = Duration.between(LocalDate.now(), dateStart);
+        int days = (int) duration.toDays() - booking.getHiresDays();
+        if (days <= 0) {
+            return 0;
+        } else {
+            Car car = booking.getCar();
+            int feeForDelay = car.getPrice() * 2;
+            return days * feeForDelay;
+        }
+    }
 
     public LocalDate getDateEnd(Long idCarRent) {
         CarRent carRent = carRentService.getCarRentById(idCarRent);

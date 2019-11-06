@@ -40,7 +40,7 @@ public class DataInitializer implements ApplicationListener<ContextRefreshedEven
 
 //        addDefaultUser("user", "user", "USER");
         addDefaultUser("admin", "admin", "admin name", "admin surname", "11", "22", "ADMIN", "GRUNT", "MANAGER", "CLIENT");
-        addDefaultUser("manager", "manager", "manager name", "manager surname", "33", "44", "MANAGER");
+        addDefaultUser("manager", "a", "manager name", "manager surname", "33", "44", "MANAGER");
         addDefaultUser("grunt", "a", "grunt name", "grunt surname", "55", "66", "GRUNT");
         addDefaultUser("client", "a", "client name", "client surname","email", "address", "CLIENT");
 

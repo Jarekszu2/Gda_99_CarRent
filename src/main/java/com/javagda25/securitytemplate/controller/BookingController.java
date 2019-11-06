@@ -163,9 +163,10 @@ public class BookingController {
     }
 
     @GetMapping("/find")
-    public String findBooking(Model model, Long idBooking) {
+//    public String findBooking(Model model, Long idBooking) {
+    public String findBooking() {
 
-        model.addAttribute("id", idBooking);
+//        model.addAttribute("id", idBooking);
         return "booking-find";
     }
 

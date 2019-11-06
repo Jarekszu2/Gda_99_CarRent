@@ -11,30 +11,30 @@
     <h1>CarReturns list</h1>
     <div class="row col-md-12">
         <div class="row col-md-12 list-header-row">
-            <div class="col-1">CarReturn id</div>
+            <div class="col-2">CarReturn id</div>
             <!--<div class="col-1">Client name</div>-->
             <!--<div class="col-2">Client surname</div>-->
             <!--<div class="col-2">Car</div>-->
             <!--<div class="col-1">Date end</div>-->
-            <div class="col-1">Date of return</div>
-            <!--<div class="col-1">Payment for delay</div>-->
-            <div class="col-1">Payment for cleaning</div>
-            <div class="col-1">Payment for fuel</div>
-            <div class="col-1">Comment</div>
+            <div class="col-2">Date of return</div>
+            <div class="col-2">Payment for delay</div>
+            <div class="col-2">Payment for cleaning</div>
+            <div class="col-2">Payment for fuel</div>
+            <div class="col-2">Comment</div>
             <!--<div class="col-2">&lt;!&ndash;Buttons&ndash;&gt;</div>-->
         </div>
         <div th:each="carReturn : ${carReturns}" class="row col-md-12 list-data-row">
             <!--<div class="col-1" th:if="${!booking.isAccepted()}" th:text="${booking.getIdBooking()}"></div>-->
-            <div class="col-1" th:text="${carReturn.getIdCarReturn()}"></div>
+            <div class="col-2" th:text="${carReturn.getIdCarReturn()}"></div>
             <!--<div class="col-1" th:text="${carReturn.getCarRent().getBooking().getClient().getName()}"></div>-->
             <!--<div class="col-2" th:text="${carReturn.getCarRent().getBooking().getClient().getSurname()}"></div>-->
             <!--<div class="col-1" th:text="${carReturn.getCarRent().getBooking().getCar().getName()}"></div>-->
             <!--<div class="col-1" th:text="${carReturn.getCarRent().getBooking().getDateStart().plusDays(${carReturn.getCarRent().getBooking().getHiresDays()})}"></div>-->
-            <div class="col-1" th:text="${carReturn.getDateOfReturn()}"></div>
-            <!--<div class="col-1" th:text="${carReturn.getAdditionalPaymentForDelay()}"></div>-->
-            <div class="col-1" th:text="${carReturn.getAdditionalPaymentForCleaning()}"></div>
-            <div class="col-1" th:text="${carReturn.getAdditionalPaymentForFuel()}"></div>
-            <div class="col-1" th:text="${carReturn.getCommentCarReturn()}"></div>
+            <div class="col-2" th:text="${carReturn.getDateOfReturn()}"></div>
+            <div class="col-2" th:text="${carReturn.getAdditionalPaymentForDelay()}"></div>
+            <div class="col-2" th:text="${carReturn.getAdditionalPaymentForCleaning()}"></div>
+            <div class="col-2" th:text="${carReturn.getAdditionalPaymentForFuel()}"></div>
+            <div class="col-2" th:text="${carReturn.getCommentCarReturn()}"></div>
             <!--<div class="col-2" th:text="${carRent.getHiresDays()}"></div>-->
             <!--<div class="col-2" th:text="${carRent.getCar().getName()}"></div>-->
             <!--<div class="col-1" th:text="${carRent.isCanceled()}"></div>-->

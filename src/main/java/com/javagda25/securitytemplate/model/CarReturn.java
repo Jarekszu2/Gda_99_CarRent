@@ -29,7 +29,7 @@ public class CarReturn {
     private CarRent carRent;
 
 //    @Formula(value = )
-//    private Integer additionalPaymentForDelay;
+    private int additionalPaymentForDelay;
 
     private int additionalPaymentForCleaning;
 
