@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Revenues for period</title>
+    <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
+</head>
+<body>
+<th:block th:replace="fragments :: navigator" th:remove="tag"/>
+<div class="container">
+    <h1>Revenues for period</h1>
+    <div class="row col-md-12">
+        <div class="row col-md-12 list-header-row">
+            <div class="col-4">Date start</div>
+            <div class="col-4">Date end</div>
+            <div class="col-4">Revenues</div>
+            <!--<div class="col-1">Rental days</div>-->
+        </div>
+        <div class="row col-md-12 list-data-row">
+            <div class="col-1" th:text="${dateStart}"></div>
+            <div class="col-1" th:text="${dateStart}"></div>
+            <div class="col-1" th:text="${revenues}"></div>
+            <!--<div class="col-2" th:if="${booking.isAccepted()}" th:text="${booking.getBookingDate()}"></div>-->
+        </div>
+    </div>
+</div>
+<th:block th:replace="fragments :: footer" th:remove="tag"/>
+<th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</body>
+</html>
