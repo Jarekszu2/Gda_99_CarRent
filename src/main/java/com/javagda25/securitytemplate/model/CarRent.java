@@ -25,7 +25,7 @@ public class CarRent {
     private CarReturn carReturn;
 
     @Formula(value = "1000")
-    private int income;
+    private int revenue;
 
     private boolean carReturned;
 

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -72,5 +73,15 @@ public class CarRentController {
         Page<CarRent> carRentPage = carRentService.getPageCarRents(PageRequest.of(page, size));
         model.addAttribute("carRents", carRentPage);
         return "carRent-list";
+    }
+
+    @GetMapping("/revenues_period")
+    public String revenuesForPeriod() {
+        return "carRent-revenuesPeriod";
+    }
+
+    @PostMapping("/revenues_period")
+    public String postRevenuesForPeriod(LocalDate dateStart, LocalDate dateEnd) {
+
     }
 }

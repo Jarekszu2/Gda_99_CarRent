@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Revenues period</title>
+    <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
+</head>
+<body>
+<th:block th:replace="fragments :: navigator" th:remove="tag"/>
+<div class="container">
+    <h1>Revenues period</h1>
+    <form th:action="@{/carRent/carRent_revenuesPeriod}" method="post">
+        <div class="row col-12 form-container">
+
+            <!--<input type="hidden" th:field="*{idBooking}" th:value="*{idBooking}">-->
+            <!--<input type="hidden" th:field="*{bookingDateTime}" th:value="*{bookingDateTime}">-->
+
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="dateStart">Date start:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="date" id="dateStart" th:name="dateStart">
+                </div>
+            </div>
+
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="dateEnd">Date start:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="date" id="dateEnd" th:name="dateEnd">
+                </div>
+            </div>
+
+
+            <!--<div class="row col-md-12 form-input-row">-->
+                <!--<div class="col-md-6">-->
+                    <!--<label for="hiresDays">Rental days:</label>-->
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                    <!--<input class="form-control" type="number" id="hiresDays" th:field="*{hiresDays}">-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="row col-md-12 form-input-row">-->
+                <!--<div class="col-md-6">-->
+                    <!--<label for="cars">Car:</label>-->
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                    <!--<select th:name="carId" id="cars" class="form-control col-md-12">-->
+                        <!--<option th:each="car : ${cars}"-->
+                                <!--th:text="${car.getName()}"-->
+                                <!--th:value="${car.getIdCar()}"-->
+                                <!--th:selected="${booking.getCar() != null && booking.getCar().getIdCar() == car.getIdCar()}"/>-->
+                    <!--</select>-->
+                <!--</div>-->
+
+            <!--</div>-->
+
+            <div class="row col-md-12 form-button-row">
+                <div class="col-md-4">
+                    <button type="reset" class="btn btn-warning offset-3 col-md-6">Reset</button>
+                </div>
+
+                <!--<div class="col-md-12">-->
+                    <!--<div class="col-md-4">-->
+                        <!--<a th:href="@{${referer}}">-->
+                            <!--<button type="button" class="btn btn-primary offset-3 col-md-6">Back</button>-->
+                        <!--</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary offset-3 col-md-6">Submit</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<th:block th:replace="fragments :: footer" th:remove="tag"/>
+<th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</body>
+</html>

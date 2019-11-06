@@ -17,7 +17,7 @@
             <div class="col-2">Client surname</div>
             <div class="col-2">Car</div>
             <div class="col-2">Date start</div>
-            <div class="col-1">Hire days</div>
+            <div class="col-1" sec:authorize="hasRole('GRUNT')">Hire days</div>
             <div class="col-1" sec:authorize="hasRole('MANAGER')">Income</div>
             <div class="col-2"><!--Buttons--></div>
         </div>
@@ -28,8 +28,8 @@
             <div class="col-2" th:text="${carRent.getBooking().getClient().getSurname()}"></div>
             <div class="col-2" th:text="${carRent.getBooking().getCar().getName()}"></div>
             <div class="col-2" th:text="${carRent.getBooking().getDateStart()}"></div>
-            <div class="col-1" th:text="${carRent.getBooking().getHiresDays()}"></div>
-            <div class="col-1" sec:authorize="hasRole('MANAGER')" th:text="${carRent.getIncome()}"></div>
+            <div class="col-1" sec:authorize="hasRole('GRUNT')" th:text="${carRent.getBooking().getHiresDays()}"></div>
+            <div class="col-1" sec:authorize="hasRole('MANAGER')" th:text="${carRent.getRevenue()}"></div>
             <!--<div class="col-2" th:text="${carRent.getCar().getName()}"></div>-->
             <!--<div class="col-1" th:text="${carRent.isCanceled()}"></div>-->
             <div class="row col-2">
