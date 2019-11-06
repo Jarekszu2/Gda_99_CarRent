@@ -102,4 +102,8 @@ public class AccountController {
         return "redirect:/car/list_cars";
     }
 
+    private String showRegisteredName(Principal principal) {
+        return principal.getName();
+    }
+
 }
