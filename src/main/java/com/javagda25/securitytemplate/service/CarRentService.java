@@ -26,7 +26,8 @@ public class CarRentService {
     }
 
     public Page<CarRent> getPageCarRents(PageRequest of) {
-        return carRentRepository.findAllByCarReturned(true, of);
+//        return carRentRepository.findAllByCarReturned(true, of);
+        return carRentRepository.findAll( of);
     }
 
     public List<CarRent> getListCarRentsForPeriod(LocalDate dateStart, LocalDate dateEnd) {
@@ -43,10 +44,12 @@ public class CarRentService {
 
         List<CarRent> carRentsListForPeriod = getListCarRentsForPeriod(dateStart, dateEnd);
 
-        int revenues = carRentsListForPeriod.stream()
-                .mapToInt(value -> value.getRevenue())
+
+        int revenuesFromStream = carRentsListForPeriod.stream()
+                .mapToInt(value -> carRentRepository.calculateRevenue(value.getIdCarRent()))
                 .sum();
-        return revenues;
+
+        return revenuesFromStream;
     }
 
     public CarRent getCarRentById(Long idCarRent) {

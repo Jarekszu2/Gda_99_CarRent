@@ -3,6 +3,8 @@ package com.javagda25.securitytemplate.service;
 import com.javagda25.securitytemplate.model.Booking;
 import com.javagda25.securitytemplate.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,5 +33,9 @@ public class BookingService {
 
     public Optional<Booking> getById(Long idBooking) {
         return bookingRepository.findById(idBooking);
+    }
+
+    public Page<Booking> getAllById(Long idBooking) {
+        return bookingRepository.findAllByIdBooking(idBooking, PageRequest.of(0, 10));
     }
 }

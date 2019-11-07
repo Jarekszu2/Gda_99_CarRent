@@ -1,8 +1,6 @@
 package com.javagda25.securitytemplate.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
@@ -18,13 +16,18 @@ public class CarRent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCarRent;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToOne
     private Booking booking;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToOne
     private CarReturn carReturn;
 
     @Transient
+//    @Formula(value = "1000")
     private int revenue;
 
     private boolean carReturned;

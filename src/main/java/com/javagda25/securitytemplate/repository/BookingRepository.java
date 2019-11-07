@@ -14,4 +14,5 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     Page<Booking> findAllByAccepted(boolean accepted, Pageable pageable);
     Page<Booking> findAllByAcceptedAndCarRented(boolean accepted, boolean carrented, Pageable pageable);
     Page<Booking> findAllByCarRented(boolean carrented, Pageable pageable);
+    Page<Booking> findAllByIdBooking(Long id, Pageable pageable);
 }

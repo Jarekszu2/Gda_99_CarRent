@@ -133,18 +133,18 @@
                     <li class="page-item"
                         th:each="number : ${#numbers.sequence(cars.getNumber()-3, cars.getNumber()-1)}"
                         th:if="${number >=0}">
-                        <a class="page-link" th:href="@{/car/list_cars(page=${number}, size=${cars.getSize()})}"
+                        <a class="page-link" th:href="@{/car/list_cars(page=${number}, size=${cars.getSize()}, available=${available}, booked=${booked}, rented=${rented}, serviced=${serviced})}"
                            th:text="${number + 1}"></a>
                     </li>
                     <li class="page-item"
                         th:each="number : ${#numbers.sequence(cars.getNumber(), cars.getNumber()+3)}"
                         th:if="${number< cars.getTotalPages()}">
-                        <a class="page-link" th:href="@{/car/list_cars(page=${number}, size=${cars.getSize()})}"
+                        <a class="page-link" th:href="@{/car/list_cars(page=${number}, size=${cars.getSize()}, available=${available}, booked=${booked}, rented=${rented}, serviced=${serviced})}"
                            th:text="${number + 1}"></a>
                     </li>
                     <li class="page-item" th:if="${cars.getNumber() < cars.getTotalPages()-1}">
                         <a class="page-link"
-                           th:href="@{/car/list_cars(page=${cars.getNumber()+1}, size=${cars.getSize()})}">Next</a>
+                           th:href="@{/car/list_cars(page=${cars.getNumber()+1}, size=${cars.getSize()}, available=${available}, booked=${booked}, rented=${rented}, serviced=${serviced})}">Next</a>
                     </li>
                 </ul>
             </nav>

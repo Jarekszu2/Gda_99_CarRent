@@ -173,12 +173,8 @@ public class BookingController {
     @PostMapping("/find")
     public String postFindBooking(Model model,
                                   @RequestParam(name = "id") Long id) {
-        Optional<Booking> optionalBooking = bookingService.getById(id);
-        if (optionalBooking.isPresent()) {
-            Booking booking = optionalBooking.get();
-            model.addAttribute("bookings", booking);
-            return "redirect:/booking/list_bookings";
-        }
-        return "redirect:/booking/bookings";
+        Page<Booking> page = bookingService.getAllById(id);
+        model.addAttribute("bookings", page);
+        return "bookingAll-list";
     }
 }

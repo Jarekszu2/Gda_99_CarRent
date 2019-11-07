@@ -76,7 +76,9 @@ public class CarRentController {
                                @RequestParam(name = "size", defaultValue = "2") int size) {
         Page<CarRent> carRentPage = carRentService.getPageCarRents(PageRequest.of(page, size));
         for (CarRent r : carRentPage) {
-            r.setRevenue(carRentRepository.calculateRevenue(r.getIdCarRent()));
+            if(r.isCarReturned()) {
+                r.setRevenue(carRentRepository.calculateRevenue(r.getIdCarRent()));
+            }
         }
         model.addAttribute("carRents", carRentPage);
         return "carRent-list";
@@ -92,6 +94,7 @@ public class CarRentController {
                                @RequestParam(name = "dateStart") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateStart,
                                @RequestParam(name = "dateEnd") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dateEnd) {
         int revenues = carRentService.getRevenuesForListCarRents(dateStart, dateEnd);
+//        int revenues = 79;
         model.addAttribute("dateStart", dateStart);
         model.addAttribute("dateEnd", dateEnd);
         model.addAttribute("revenues", revenues);
