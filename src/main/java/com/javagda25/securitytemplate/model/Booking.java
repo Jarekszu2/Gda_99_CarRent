@@ -42,7 +42,7 @@ public class Booking {
     @ManyToOne(fetch = FetchType.LAZY)
     private Car car;
 
-    @OneToOne
+    @OneToOne(mappedBy = "booking")
     private CarRent carRent;
 
     private boolean canceled = false;

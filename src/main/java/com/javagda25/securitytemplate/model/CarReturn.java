@@ -25,7 +25,7 @@ public class CarReturn {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateOfReturn;
 
-    @OneToOne
+    @OneToOne(mappedBy = "carReturn")
     private CarRent carRent;
 
 //    @Formula(value = )

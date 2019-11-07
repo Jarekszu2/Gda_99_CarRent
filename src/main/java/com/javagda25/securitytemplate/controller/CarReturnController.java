@@ -36,15 +36,11 @@ public class CarReturnController {
         CarRent carRent = carRentService.getCarRentById(idCarRent);
         Booking booking = carRent.getBooking();
         Car car = booking.getCar();
-//        int additionalPaymentForDelay = carReturnService.getDelayPayment(idCarRent);
-        int additionalPaymentForDelay = 100;
-//        int delayPayment = car.getPrice() * 2;
-//        Integer delayPayment = 1;
+        int additionalPaymentForDelay = carReturnService.getDelayPayment(idCarRent);
         int cleaningPayment = car.getFeeForCleaning();
         int fuelPayment = car.getFeeForFuel();
         String comment = "ok";
         LocalDate dateEnd = carReturnService.getDateEnd(idCarRent);
-//        model.addAttribute("carRent", carRent);
         model.addAttribute("idCarRent", carRent.getIdCarRent());
         model.addAttribute("additionalPaymentForDelay", additionalPaymentForDelay);
         model.addAttribute("additionalPaymentForFuel", fuelPayment);

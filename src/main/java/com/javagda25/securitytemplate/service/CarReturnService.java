@@ -27,8 +27,8 @@ public class CarReturnService {
         CarRent carRent = carRentService.getCarRentById(idCarRent);
         Booking booking = carRent.getBooking();
         LocalDate dateStart = booking.getBookingDate();
-        Duration duration = Duration.between(LocalDate.now(), dateStart);
-        int days = (int) duration.toDays() - booking.getHiresDays();
+        Period period = Period.between(LocalDate.now(), dateStart);
+        int days = period.getDays() - booking.getHiresDays();
         if (days <= 0) {
             return 0;
         } else {

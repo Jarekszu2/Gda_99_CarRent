@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CarRentService {
@@ -25,7 +26,27 @@ public class CarRentService {
     }
 
     public Page<CarRent> getPageCarRents(PageRequest of) {
-        return carRentRepository.findAll(of);
+        return carRentRepository.findAllByCarReturned(true, of);
+    }
+
+    public List<CarRent> getListCarRentsForPeriod(LocalDate dateStart, LocalDate dateEnd) {
+        List<CarRent> carRentList = carRentRepository.findAll();
+        List<CarRent> carListCarRentsForPeriod = carRentList.stream()
+                .filter(carRent -> carRent.isCarReturned())
+                .filter(carRent -> carRent.getCarReturn().getDateOfReturn().isAfter(dateStart) &&
+                        carRent.getCarReturn().getDateOfReturn().isBefore(dateEnd))
+                .collect(Collectors.toList());
+        return carListCarRentsForPeriod;
+    }
+
+    public int getRevenuesForListCarRents(LocalDate dateStart, LocalDate dateEnd) {
+
+        List<CarRent> carRentsListForPeriod = getListCarRentsForPeriod(dateStart, dateEnd);
+
+        int revenues = carRentsListForPeriod.stream()
+                .mapToInt(value -> value.getRevenue())
+                .sum();
+        return revenues;
     }
 
     public CarRent getCarRentById(Long idCarRent) {

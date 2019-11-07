@@ -24,8 +24,8 @@ public class CarRent {
     @OneToOne
     private CarReturn carReturn;
 
-    @Formula(value = "1000")
-    private int income;
+    @Transient
+    private int revenue;
 
     private boolean carReturned;
 
