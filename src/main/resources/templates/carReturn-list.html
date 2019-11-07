@@ -11,16 +11,12 @@
     <h1>CarReturns list</h1>
     <div class="row col-md-12">
         <div class="row col-md-12 list-header-row">
-            <div class="col-2">CarReturn id</div>
-            <!--<div class="col-1">Client name</div>-->
-            <!--<div class="col-2">Client surname</div>-->
-            <!--<div class="col-2">Car</div>-->
-            <!--<div class="col-1">Date end</div>-->
-            <div class="col-2">Date of return</div>
-            <div class="col-2">Payment for delay</div>
-            <div class="col-2">Payment for cleaning</div>
-            <div class="col-2">Payment for fuel</div>
-            <div class="col-2">Comment</div>
+            <div class="col-2 font-weight-bold">CarReturn id</div>
+            <div class="col-2 font-weight-bold">Date of return</div>
+            <div class="col-2 font-weight-bold">Payment for delay</div>
+            <div class="col-2 font-weight-bold">Payment for cleaning</div>
+            <div class="col-2 font-weight-bold">Payment for fuel</div>
+            <div class="col-2 font-weight-bold">Comment</div>
             <!--<div class="col-2">&lt;!&ndash;Buttons&ndash;&gt;</div>-->
         </div>
         <div th:each="carReturn : ${carReturns}" class="row col-md-12 list-data-row">

@@ -12,17 +12,17 @@
     <div class="row col-md-12">
         <div class="row col-md-12 list-header-row">
             <div class="col-1 font-weight-bold">Id</div>
-            <div class="col-2 font-weight-bold">Name</div>
-            <div class="col-2 font-weight-bold">Hire/day</div>
+            <div class="col-4 font-weight-bold">Name</div>
+            <div class="col-1 font-weight-bold">Hire/day</div>
             <div class="col-2 font-weight-bold">Status</div>
-            <div class="col-5 font-weight-bold"><!--Buttons--></div>
+            <div class="col-4 font-weight-bold"><!--Buttons--></div>
         </div>
         <div th:each="car : ${cars}" class="row col-md-12 list-data-row">
             <div class="col-1" th:text="${car.getIdCar()}"></div>
-            <div class="col-2" th:text="${car.getName()}"></div>
-            <div class="col-2" th:text="${car.getPrice()}"></div>
+            <div class="col-4" th:text="${car.getName()}"></div>
+            <div class="col-1" th:text="${car.getPrice()}"></div>
             <div class="col-2" th:text="${car.getCarStatus()}"></div>
-            <div class="row col-5">
+            <div class="row col-4">
                 <div class="col-4">
                     <a th:href="@{/car/details2(carId=${car.getIdCar()})}">
                         <button type="button" class="btn btn-warning">
@@ -30,7 +30,7 @@
                         </button>
                     </a>
                 </div>
-                <div class="col-4" <!--sec:authorize="hasRole('CLIENT')-->">
+                <div class="col-4"> <!--sec:authorize="hasRole('CLIENT')-->
                     <a th:href="@{/booking/booking_add(carId=${car.getIdCar()})}">
                         <button type="button" class="btn btn-primary">
                             Book
@@ -44,18 +44,18 @@
     <h1>Cars list - booked</h1>
     <div class="row col-md-12">
         <div class="row col-md-12 list-header-row">
-            <div class="col-1">Id</div>
-            <div class="col-2">Name</div>
-            <div class="col-2">Hire/day</div>
-            <div class="col-2">Status</div>
-            <div class="col-5"><!--Buttons--></div>
+            <div class="col-1 font-weight-bold">Id</div>
+            <div class="col-4 font-weight-bold">Name</div>
+            <div class="col-1 font-weight-bold">Hire/day</div>
+            <div class="col-2 font-weight-bold">Status</div>
+            <div class="col-4 font-weight-bold"><!--Buttons--></div>
         </div>
         <div th:each="car : ${carsBooked}" class="row col-md-12 list-data-row">
             <div class="col-1" th:text="${car.getIdCar()}"></div>
-            <div class="col-2" th:text="${car.getName()}"></div>
-            <div class="col-2" th:text="${car.getPrice()}"></div>
+            <div class="col-4" th:text="${car.getName()}"></div>
+            <div class="col-1" th:text="${car.getPrice()}"></div>
             <div class="col-2" th:text="${car.getCarStatus()}"></div>
-            <div class="row col-5">
+            <div class="row col-4">
                 <!--<div class="col-4">-->
                     <!--<a th:href="@{/account/details(carId=${car.getIdCar()})}">-->
                         <!--<button type="button" class="btn btn-warning">-->
@@ -77,18 +77,18 @@
 <h1>Cars list - rented</h1>
 <div class="row col-md-12">
     <div class="row col-md-12 list-header-row">
-        <div class="col-1">Id</div>
-        <div class="col-2">Name</div>
-        <div class="col-2">Hire/day</div>
-        <div class="col-2">Status</div>
-        <div class="col-5"><!--Buttons--></div>
+        <div class="col-1 font-weight-bold">Id</div>
+        <div class="col-4 font-weight-bold">Name</div>
+        <div class="col-1 font-weight-bold">Hire/day</div>
+        <div class="col-2 font-weight-bold">Status</div>
+        <div class="col-4 font-weight-bold"><!--Buttons--></div>
     </div>
     <div th:each="car : ${carsRented}" class="row col-md-12 list-data-row">
         <div class="col-1" th:text="${car.getIdCar()}"></div>
-        <div class="col-2" th:text="${car.getName()}"></div>
-        <div class="col-2" th:text="${car.getPrice()}"></div>
+        <div class="col-4" th:text="${car.getName()}"></div>
+        <div class="col-1" th:text="${car.getPrice()}"></div>
         <div class="col-2" th:text="${car.getCarStatus()}"></div>
-        <div class="row col-5">
+        <div class="row col-4">
             <!--<div class="col-4">-->
             <!--<a th:href="@{/account/details(carId=${car.getIdCar()})}">-->
             <!--<button type="button" class="btn btn-warning">-->

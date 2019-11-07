@@ -3,6 +3,8 @@ package com.javagda25.securitytemplate.controller;
 import com.javagda25.securitytemplate.model.Account;
 import com.javagda25.securitytemplate.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -40,7 +42,7 @@ public class AccountController {
                            String passwordConfirm,
                            Model model) {
 
-        if(result.hasErrors()){
+        if (result.hasErrors()) {
             return registrationError(model, account, result.getFieldError().getDefaultMessage());
         }
 
@@ -49,7 +51,7 @@ public class AccountController {
             return registrationError(model, account, "Passwords do not match.");
         }
 
-        if(!accountService.register(account)){
+        if (!accountService.register(account)) {
             return registrationError(model, account, "User with given username already exists.");
         }
 
@@ -100,5 +102,8 @@ public class AccountController {
         return "redirect:/car/list_cars";
     }
 
+    private String showRegisteredName(Principal principal) {
+        return principal.getName();
+    }
 
 }

@@ -11,23 +11,23 @@
     <h1>Booking list</h1>
     <div class="row col-md-12">
         <div class="row col-md-12 list-header-row">
-            <div class="col-1 font-weight-bold">Booking id</div>
+            <div class="col-2 font-weight-bold">Booking id</div>
             <div class="col-2 font-weight-bold">Booking date</div>
             <div class="col-2 font-weight-bold">Booking start</div>
             <div class="col-2 font-weight-bold">Rental days</div>
             <div class="col-2 font-weight-bold">Car</div>
             <div class="col-1 font-weight-bold">Canceled</div>
-            <div class="col-2 font-weight-bold"><!--Buttons--></div>
+            <!--<div class="col-2 font-weight-bold">&lt;!&ndash;Buttons&ndash;&gt;</div>-->
         </div>
         <div th:each="booking : ${bookings}" class="row col-md-12 list-data-row" th:if="${!booking.isCarRented()}">
             <!--<div class="col-1" th:if="${!booking.isAccepted()}" th:text="${booking.getIdBooking()}"></div>-->
-            <div class="col-1" th:text="${booking.getIdBooking()}"></div>
+            <div class="col-2" th:text="${booking.getIdBooking()}"></div>
             <div class="col-2" th:text="${booking.getBookingDate()}"></div>
             <div class="col-2" th:text="${booking.getDateStart()}"></div>
             <div class="col-2" th:text="${booking.getHiresDays()}"></div>
             <div class="col-2" th:text="${booking.getCar().getName()}"></div>
             <div class="col-1" th:text="${booking.isCanceled()}"></div>
-            <div class="row col-2">
+            <div class="row col-1">
                 <div class="col-12">
                     <a
                        th:href="@{/carRent/add_rent(idBooking=${booking.getIdBooking()})}">
