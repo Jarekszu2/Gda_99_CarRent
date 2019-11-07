@@ -80,7 +80,7 @@ public class CarReturnController {
     @GetMapping("/list_carReturns")
     public String getCarReturnsList(Model model,
                                     @RequestParam(name = "page", defaultValue = "0") int page,
-                                    @RequestParam(name = "size", defaultValue = "2") int size) {
+                                    @RequestParam(name = "size", defaultValue = "6") int size) {
         Page<CarReturn> carReturnPage = carReturnService.getPageCarReturnss(PageRequest.of(page, size));
         model.addAttribute("carReturns", carReturnPage);
         return "carReturn-list";

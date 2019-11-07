@@ -49,7 +49,7 @@ public class CarController {
 //    }
     public String carList(Model model,
                                    @RequestParam(name = "page", defaultValue = "0") int page,
-                                   @RequestParam(name = "size", defaultValue = "4") int size,
+                                   @RequestParam(name = "size", defaultValue = "6") int size,
                                    @RequestParam(name = "available", defaultValue = "false") boolean available,
                                    @RequestParam(name = "booked", defaultValue = "false") boolean booked,
                                    @RequestParam(name = "rented", defaultValue = "false") boolean rented,

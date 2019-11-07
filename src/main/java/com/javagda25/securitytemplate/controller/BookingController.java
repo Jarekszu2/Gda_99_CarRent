@@ -38,7 +38,7 @@ public class BookingController {
     @GetMapping("/list_bookings")
     public String listBookings(Model model,
                                @RequestParam(name = "page", defaultValue = "0") int page,
-                               @RequestParam(name = "size", defaultValue = "2") int size) {
+                               @RequestParam(name = "size", defaultValue = "6") int size) {
         Page<Booking> bookingPage = carService.getNotAcceptedPageBookings(PageRequest.of(page, size));
         model.addAttribute("bookings", bookingPage);
         return "bookingAll-list";

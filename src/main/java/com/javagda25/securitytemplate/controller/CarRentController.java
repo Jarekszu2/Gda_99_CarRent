@@ -73,7 +73,7 @@ public class CarRentController {
     @GetMapping("/list_carRents")
     public String listCarRents(Model model,
                                @RequestParam(name = "page", defaultValue = "0") int page,
-                               @RequestParam(name = "size", defaultValue = "2") int size) {
+                               @RequestParam(name = "size", defaultValue = "6") int size) {
         Page<CarRent> carRentPage = carRentService.getPageCarRents(PageRequest.of(page, size));
         for (CarRent r : carRentPage) {
             if(r.isCarReturned()) {
