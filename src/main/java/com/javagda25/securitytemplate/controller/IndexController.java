@@ -1,9 +1,7 @@
 package com.javagda25.securitytemplate.controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,7 +17,7 @@ public class IndexController {
 
     @GetMapping("/tylkodlakozakow")
     public String kozaki(){
-        return "index";
+        return "kozaki";
     }
 
     @GetMapping("/login")
@@ -28,7 +26,7 @@ public class IndexController {
     }
 
     @GetMapping("/faq")
-    public String faq(){ return "faq";}
+    public String faq(){ return "about-us";}
 
     @GetMapping("/contact-form")
     public String contactFrom(){return "contact-form";}

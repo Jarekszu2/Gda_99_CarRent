@@ -316,3 +316,14 @@ div.sticky-left {
     align-content: center;
 }
 
+.sebix-obrazek{
+    width: auto;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.caloroczna-niewidoczna {
+    color: #d4e661;
+    size: 40px;
+    margin-left: 10px;
+}
