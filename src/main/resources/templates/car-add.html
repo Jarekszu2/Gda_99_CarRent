@@ -9,7 +9,7 @@
 <th:block th:replace="fragments :: navigator" th:remove="tag"/>
 <div class="container">
     <h1>Car add</h1>
-    <form th:action="@{/grunt/add_car}" method="post" th:object="${car}">
+    <form th:action="@{/car/add_car}" method="post" th:object="${car}">
         <div class="row col-12 form-container">
 
             <input type="hidden" th:field="*{idCar}" th:value="*{idCar}">

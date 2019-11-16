@@ -27,8 +27,8 @@ public class IndexController {
         return "login-form";
     }
 
-    @GetMapping("/faq")
-    public String faq(){ return "faq";}
+    @GetMapping("/about-us")
+    public String aboutUs(){ return "about-us";}
 
     @GetMapping("/contact-form")
     public String contactFrom(){return "contact-form";}

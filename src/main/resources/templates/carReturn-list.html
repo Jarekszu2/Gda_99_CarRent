@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CarReturns</title>
+    <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
+</head>
+<body>
+<th:block th:replace="fragments :: navigator" th:remove="tag"/>
+<div class="container">
+    <h1>CarReturns list</h1>
+    <div class="row col-md-12">
+        <div class="row col-md-12 list-header-row">
+            <div class="col-1">CarReturn id</div>
+            <!--<div class="col-1">Client name</div>-->
+            <!--<div class="col-2">Client surname</div>-->
+            <!--<div class="col-2">Car</div>-->
+            <!--<div class="col-1">Date end</div>-->
+            <div class="col-1">Date of return</div>
+            <!--<div class="col-1">Payment for delay</div>-->
+            <div class="col-1">Payment for cleaning</div>
+            <div class="col-1">Payment for fuel</div>
+            <div class="col-1">Comment</div>
+            <!--<div class="col-2">&lt;!&ndash;Buttons&ndash;&gt;</div>-->
+        </div>
+        <div th:each="carReturn : ${carReturns}" class="row col-md-12 list-data-row">
+            <!--<div class="col-1" th:if="${!booking.isAccepted()}" th:text="${booking.getIdBooking()}"></div>-->
+            <div class="col-1" th:text="${carReturn.getIdCarReturn()}"></div>
+            <!--<div class="col-1" th:text="${carReturn.getCarRent().getBooking().getClient().getName()}"></div>-->
+            <!--<div class="col-2" th:text="${carReturn.getCarRent().getBooking().getClient().getSurname()}"></div>-->
+            <!--<div class="col-1" th:text="${carReturn.getCarRent().getBooking().getCar().getName()}"></div>-->
+            <!--<div class="col-1" th:text="${carReturn.getCarRent().getBooking().getDateStart().plusDays(${carReturn.getCarRent().getBooking().getHiresDays()})}"></div>-->
+            <div class="col-1" th:text="${carReturn.getDateOfReturn()}"></div>
+            <!--<div class="col-1" th:text="${carReturn.getAdditionalPaymentForDelay()}"></div>-->
+            <div class="col-1" th:text="${carReturn.getAdditionalPaymentForCleaning()}"></div>
+            <div class="col-1" th:text="${carReturn.getAdditionalPaymentForFuel()}"></div>
+            <div class="col-1" th:text="${carReturn.getCommentCarReturn()}"></div>
+            <!--<div class="col-2" th:text="${carRent.getHiresDays()}"></div>-->
+            <!--<div class="col-2" th:text="${carRent.getCar().getName()}"></div>-->
+            <!--<div class="col-1" th:text="${carRent.isCanceled()}"></div>-->
+            <!--<div class="row col-2">-->
+                <!--<div class="col-12">-->
+                    <!--<a th:href="@{/carRent/add_return(idCarRent=${carRent.getIdCarRent()})}">-->
+                        <!--<button type="button" class="btn btn-danger">-->
+                                <!--Car Return-->
+                        <!--</button>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-4">-->
+                    <!--<a th:href="@{/car/edit(carId=${car.getIdCar()})}">-->
+                        <!--<button type="button" class="btn btn-primary">-->
+                            <!--Edit-->
+                        <!--</button>-->
+                    <!--</a>-->
+                <!--</div>-->
+                <!--<div class="col-4">-->
+                    <!--<a th:href="@{/car/details(carId=${car.getIdCar()})}">-->
+                        <!--<button type="button" class="btn btn-primary">-->
+                            <!--Details-->
+                        <!--</button>-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+
+        <div class="row col-md-12 justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item" th:if="${carReturns.getNumber() >0}">
+                        <a class="page-link"
+                           th:href="@{/carReturn/list_carReturns(page=${carReturns.getNumber()-1}, size=${carReturns.getSize()})}">Previous</a>
+                    </li>
+                    <li class="page-item"
+                        th:each="number : ${#numbers.sequence(carReturns.getNumber()-3, carReturns.getNumber()-1)}"
+                        th:if="${number >=0}">
+                        <a class="page-link" th:href="@{/carReturn/list_carReturns(page=${number}, size=${carReturns.getSize()})}"
+                           th:text="${number + 1}"></a>
+                    </li>
+                    <li class="page-item"
+                        th:each="number : ${#numbers.sequence(carReturns.getNumber(), carReturns.getNumber()+3)}"
+                        th:if="${number< carReturns.getTotalPages()}">
+                        <a class="page-link" th:href="@{/carReturn/list_carReturns(page=${number}, size=${carReturns.getSize()})}"
+                           th:text="${number + 1}"></a>
+                    </li>
+                    <li class="page-item" th:if="${carReturns.getNumber() < carReturns.getTotalPages()-1}">
+                        <a class="page-link"
+                           th:href="@{/carReturn/list_carReturns(page=${carReturns.getNumber()+1}, size=${carReturns.getSize()})}">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+</div>
+<th:block th:replace="fragments :: footer" th:remove="tag"/>
+<th:block th:replace="fragments :: scripts" th:remove="tag"/>
+</body>
+</html>

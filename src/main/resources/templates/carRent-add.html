@@ -2,18 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Booking add</title>
+    <title>Rent add</title>
     <th:block th:replace="fragments :: link-styles" th:remove="tag"/>
 </head>
 <body>
 <th:block th:replace="fragments :: navigator" th:remove="tag"/>
 <div class="container">
-    <h1>Booking add</h1>
-    <form th:action="@{/booking/booking_add}" method="post" th:object="${booking}">
+    <h1>Rent add</h1>
+    <form th:action="@{/carRent/add_rent}" method="post" th:object="${booking}">
         <div class="row col-12 form-container">
 
-            <!--<input type="hidden" th:field="*{idBooking}" th:value="*{idBooking}">-->
-            <!--<input type="hidden" th:field="*{bookingDateTime}" th:value="*{bookingDateTime}">-->
+            <input type="hidden" th:field="*{idBooking}" th:value="*{idBooking}">
+            <!--<input type="hidden" th:field="${idCar}" th:value="${idCar}">-->
+            <!--<input type="hidden" th:field="${idClient}" th:value="${idClient}">-->
 
             <div class="row col-md-12 form-input-row">
                 <div class="col-md-6">
@@ -35,18 +36,44 @@
 
             <div class="row col-md-12 form-input-row">
                 <div class="col-md-6">
-                    <label for="cars">Car:</label>
+                    <label for="car">Car:</label>
                 </div>
                 <div class="col-md-6">
-                    <select th:name="carId" id="cars" class="form-control col-md-12">
-                        <option th:each="car : ${cars}"
-                                th:text="${car.getName()}"
-                                th:value="${car.getIdCar()}"
-                                th:selected="${booking.getCar() != null && booking.getCar().getIdCar() == car.getIdCar()}"/>
-                    </select>
+                    <input class="form-control" type="text" id="car" th:name="${carName}" th:value="${carName}">
                 </div>
-
             </div>
+
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="clientName">Client name:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="clientName" th:name="${clientName}" th:value="${clientName}">
+                </div>
+            </div>
+
+            <div class="row col-md-12 form-input-row">
+                <div class="col-md-6">
+                    <label for="clientSurname">Client surname:</label>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control" type="text" id="clientSurname" th:name="${clientSurname}" th:value="${clientSurname}">
+                </div>
+            </div>
+
+            <!--<div class="row col-md-12 form-input-row">-->
+                <!--<div class="col-md-6">-->
+                    <!--<label for="cars">Car:</label>-->
+                <!--</div>-->
+                <!--<div class="col-md-6">-->
+                    <!--<select th:name="carId" id="cars" class="form-control col-md-12">-->
+                        <!--<option th:each="car : ${cars}"-->
+                                <!--th:text="${car.getName()}"-->
+                                <!--th:value="${car.getIdCar()}"-->
+                                <!--th:selected="${booking.getCar() != null && booking.getCar().getIdCar() == car.getIdCar()}"/>-->
+                    <!--</select>-->
+                <!--</div>-->
+            <!--</div>-->
 
             <div class="row col-md-12 form-button-row">
                 <div class="col-md-4">
