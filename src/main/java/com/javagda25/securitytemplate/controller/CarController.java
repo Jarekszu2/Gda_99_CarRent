@@ -113,7 +113,7 @@ public class CarController {
         Long idClient = account.getId();
         List<Booking> bookingList = bookingService.listBookingsOfClient(idClient);
         Set<Car> carSetBooked = bookingList.stream()
-                .map(booking -> booking.getCar())
+                .map(Booking::getCar)
                 .filter(car -> car.getCarStatus().equals(CarStatus.BOOKED))
                 .collect(Collectors.toSet());
         model.addAttribute("carsBooked", carSetBooked);
@@ -122,7 +122,7 @@ public class CarController {
 //        Long idClient = account.getId();
 //        List<Booking> bookingList = bookingService.listBookingsOfClient(idClient);
         Set<Car> carSetRented = bookingList.stream()
-                .map(booking -> booking.getCar())
+                .map(Booking::getCar)
                 .filter(car -> car.getCarStatus().equals(CarStatus.RENTED))
                 .collect(Collectors.toSet());
         model.addAttribute("carsRented", carSetRented);
@@ -145,18 +145,18 @@ public class CarController {
         return "redirect:/car/car_list";
     }
 
-//    @GetMapping("/remove")
-//    public String remove(
-//            HttpServletRequest request,
-//            @RequestParam(name = "carId") Long carId) {
-//        String referer = request.getHeader("referer");
-//        gruntService.remove(carId);
-//
-//        if (referer != null) {
-//            return "redirect:" + referer;
-//        }
-//        return "redirect:/car/list";
-//    }
+    @GetMapping("/remove")
+    public String remove(
+            HttpServletRequest request,
+            @RequestParam(name = "carId") Long carId) {
+        String referer = request.getHeader("referer");
+        carService.remove(carId);
+
+        if (referer != null) {
+            return "redirect:" + referer;
+        }
+        return "redirect:/car/list";
+    }
 
     @GetMapping("/edit")
     public String editCar(Model model, @RequestParam(name = "carId") Long carId) {

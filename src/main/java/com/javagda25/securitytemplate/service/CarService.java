@@ -64,4 +64,8 @@ public class CarService {
     public List<Car> getCarsAVAILABLE() {
         return carRepository.findAllByCarStatus(CarStatus.AVAILABLE);
     }
+
+    public void remove(Long carId) {
+        carRepository.deleteById(carId);
+    }
 }

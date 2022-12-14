@@ -99,7 +99,7 @@ public class AccountController {
                            Account client,
                            String newPassword) {
         accountService.update(principal.getName(), client, newPassword);
-        return "redirect:/car/list_cars";
+        return "redirect:/";
     }
 
     private String showRegisteredName(Principal principal) {

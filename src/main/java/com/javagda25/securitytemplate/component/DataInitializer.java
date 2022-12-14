@@ -2,7 +2,6 @@ package com.javagda25.securitytemplate.component;
 
 import com.javagda25.securitytemplate.model.Account;
 import com.javagda25.securitytemplate.model.AccountRole;
-import com.javagda25.securitytemplate.model.Position;
 import com.javagda25.securitytemplate.repository.AccountRepository;
 import com.javagda25.securitytemplate.repository.AccountRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +10,9 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.javagda25.securitytemplate.model.Position.*;
 
 @Component
 public class DataInitializer implements ApplicationListener<ContextRefreshedEvent> {
